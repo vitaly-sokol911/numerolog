@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оксана Соколова — Квантовый нумеролог | Ставрополь</title>
+<meta name="description" content="Квантовая нумерология в Ставрополе и онлайн. Разбор личного кода, матрица судьбы, совместимость, денежный код. Оксана Соколова — 8 лет практики, 500+ разборов.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-0:#0a0810;
+    --bg-1:#0f0c17;
+    --bg-2:#15111f;
+    --surface:rgba(255,255,255,0.045);
+    --surface-strong:rgba(255,255,255,0.07);
+    --border:rgba(212,175,110,0.18);
+    --border-soft:rgba(255,255,255,0.09);
+    --text-main:#f3efe6;
+    --text-muted:#b3aac0;
+    --text-dim:#7c7490;
+    --gold:#d4af6a;
+    --gold-light:#ecd7a3;
+    --gold-deep:#a9803f;
+    --violet:#8a6bd6;
+    --violet-light:#b39ff0;
+    --indigo:#5b4b9e;
+
+    --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-sine: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+
+    --font-display:'Playfair Display', serif;
+    --font-body:'Golos Text', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--font-body);
+    background:var(--bg-0);
+    color:var(--text-main);
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:0.05;
+    mix-blend-mode:overlay;
+    z-index:999;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  ::selection{background:var(--gold-deep);color:#fff;}
+
+  /* ---------- TYPOGRAPHY ---------- */
+  .eyebrow{
+    font-family:var(--font-body);
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  h1,h2,h3,.serif{
+    font-family:var(--font-display);
+    font-weight:400;
+    letter-spacing:-0.01em;
+  }
+  h1{
+    font-size:clamp(2.6rem, 2rem + 3.2vw, 5.4rem);
+    line-height:1.03;
+    color:var(--text-main);
+  }
+  h2{
+    font-size:clamp(2rem, 1.5rem + 2vw, 3.4rem);
+    line-height:1.08;
+  }
+  h3{
+    font-size:clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+    line-height:1.15;
+  }
+  p{color:var(--text-muted);}
+  .italic{font-style:italic;}
+
+  /* ---------- BACKGROUND ATMOSPHERE ---------- */
+  .aurora{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(900px 700px at 85% -8%, rgba(212,175,110,0.16), transparent 55%),
+      radial-gradient(800px 650px at 8% 12%, rgba(138,107,214,0.20), transparent 55%),
+      radial-gradient(700px 600px at 60% 85%, rgba(91,75,158,0.22), transparent 55%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 55%, #08060d 100%);
+  }
+  .aurora-orb{
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .orb-1{
+    width:520px;height:520px;
+    top:-140px; right:-120px;
+    background:radial-gradient(circle, rgba(212,175,110,0.35), transparent 70%);
+    animation: aurora-float 22s var(--ease-sine) infinite;
+  }
+  .orb-2{
+    width:460px;height:460px;
+    top:40%; left:-160px;
+    background:radial-gradient(circle, rgba(138,107,214,0.35), transparent 70%);
+    animation: aurora-float 26s var(--ease-sine) infinite reverse;
+  }
+  @keyframes aurora-float{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    33%{ transform: translate(-4%, 8%) scale(1.08); }
+    66%{ transform: translate(4%, -6%) scale(1.03); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .orb-1,.orb-2{animation:none;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    padding:20px 0;
+    transition: padding 0.3s var(--ease-out-soft), background 0.3s var(--ease-out-soft);
+  }
+  .nav.scrolled{
+    padding:12px 0;
+    background:rgba(10,8,16,0.65);
+    backdrop-filter:blur(24px) saturate(160%);
+    -webkit-backdrop-filter:blur(24px) saturate(160%);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    color:var(--text-main);
+  }
+  .logo-mark{
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg, var(--gold), var(--violet));
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.1rem;
+    color:#0a0810;
+  }
+  .logo-sub{
+    display:block;
+    font-family:var(--font-body);
+    font-size:9.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    margin-top:1px;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+  }
+  .nav-links a{
+    font-size:14.5px;
+    color:var(--text-muted);
+    position:relative;
+    transition:color 0.25s;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    bottom:-4px;left:0;
+    width:100%;height:1px;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:right;
+    transition:transform 0.4s cubic-bezier(0.86,0,0.07,1);
+  }
+  .nav-links a:hover{color:var(--text-main);}
+  .nav-links a:hover::after{transform:scaleX(1); transform-origin:left;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:13px 26px;
+    border-radius:100px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    border:none;
+    transition: transform 0.25s var(--ease-out-soft), box-shadow 0.25s var(--ease-out-soft), gap 0.25s;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-deep));
+    color:#211405;
+    box-shadow:0 6px 22px rgba(212,175,110,0.28), inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(212,175,110,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+    gap:14px;
+  }
+  .btn-ghost{
+    background:var(--surface);
+    color:var(--text-main);
+    border:1px solid var(--border-soft);
+    backdrop-filter:blur(10px);
+  }
+  .btn-ghost:hover{
+    background:var(--surface-strong);
+    transform:translateY(-2px);
+  }
+  .btn-sm{padding:10px 20px; font-size:13px;}
+
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .burger{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:180px 0 120px;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:7px 16px 7px 10px;
+    border-radius:100px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    margin-bottom:28px;
+  }
+  .hero-badge .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 0 rgba(212,175,110,0.5);
+    animation:pulse-gold 2.2s var(--ease-sine) infinite;
+  }
+  @keyframes pulse-gold{
+    0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(212,175,110,0.45);}
+    50%{opacity:0.8; box-shadow:0 0 0 7px rgba(212,175,110,0);}
+  }
+  .hero-badge span{font-size:12.5px; color:var(--text-muted); letter-spacing:0.02em;}
+
+  .hero h1{margin-bottom:26px;}
+  .hero h1 em{
+    font-style:italic;
+    background:linear-gradient(100deg, var(--gold-light), var(--gold) 45%, var(--violet-light));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-sub{
+    font-size:clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    max-width:520px;
+    margin-bottom:40px;
+    color:var(--text-muted);
+  }
+  .hero-actions{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .link-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14px; font-weight:600; color:var(--text-main);
+    transition:gap 0.3s var(--ease-out-soft);
+  }
+  .link-cta:hover{gap:13px;}
+
+  .hero-stats{
+    display:flex;
+    gap:40px;
+    margin-top:64px;
+    flex-wrap:wrap;
+  }
+  .hero-stat b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:2.1rem;
+    color:var(--text-main);
+    line-height:1;
+  }
+  .hero-stat span{
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+  }
+
+  /* Hero visual — quantum numeral wheel */
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .wheel-wrap{
+    position:relative;
+    width:100%;
+    max-width:460px;
+  }
+  .wheel-glow{
+    position:absolute;
+    inset:-10%;
+    background:radial-gradient(circle, rgba(138,107,214,0.35), transparent 65%);
+    filter:blur(40px);
+    z-index:0;
+  }
+  .wheel-photo{
+    position:absolute;
+    inset:14%;
+    border-radius:50%;
+    overflow:hidden;
+    z-index:1;
+    box-shadow:
+      0 0 0 1px rgba(212,175,110,0.3),
+      0 0 0 14px rgba(255,255,255,0.02),
+      0 30px 70px rgba(0,0,0,0.55);
+  }
+  .wheel-photo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    filter:saturate(0.85) contrast(1.05);
+  }
+  .wheel-photo::after{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle, transparent 45%, rgba(10,8,16,0.65) 100%),
+      linear-gradient(160deg, rgba(212,175,110,0.18), rgba(138,107,214,0.28));
+    mix-blend-mode:multiply;
+  }
+  .wheel-ring-outer{
+    animation:spin-slow 90s linear infinite;
+    transform-origin:center;
+  }
+  .wheel-ring-inner{
+    animation:spin-slow 70s linear infinite reverse;
+    transform-origin:center;
+  }
+  @keyframes spin-slow{ to{ transform:rotate(360deg); } }
+  .wheel-card{
+    position:absolute;
+    bottom:6%;
+    left:50%;
+    transform:translateX(-50%);
+    width:78%;
+    padding:20px 24px;
+    border-radius:20px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+    backdrop-filter:blur(30px) saturate(160%);
+    -webkit-backdrop-filter:blur(30px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.14);
+    box-shadow:0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+    z-index:3;
+  }
+  .wheel-card .wc-label{
+    font-size:10px; letter-spacing:0.15em; text-transform:uppercase;
+    color:var(--text-dim); margin-bottom:6px;
+  }
+  .wheel-card .wc-num{
+    font-family:var(--font-display);
+    font-size:2.4rem;
+    color:var(--gold-light);
+    line-height:1;
+    margin-bottom:4px;
+  }
+  .wheel-card .wc-desc{font-size:12.5px; color:var(--text-muted);}
+
+  /* ---------- LOGOS / SOCIAL PROOF ---------- */
+  .proof{
+    padding:56px 0;
+    border-top:1px solid var(--border-soft);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .proof-inner{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  .proof-item{text-align:center; flex:1; min-width:140px;}
+  .proof-item b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:2.4rem;
+    background:linear-gradient(135deg, var(--gold-light), var(--violet-light));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .proof-item span{
+    font-size:12px; letter-spacing:0.05em; color:var(--text-dim);
+  }
+
+  /* ---------- SECTION HEADER ---------- */
+  section{padding:128px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:72px;
+  }
+  .section-head .eyebrow{display:block; margin-bottom:14px;}
+  .section-head h2{margin-bottom:18px;}
+  .section-head p{font-size:1.05rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+  }
+  .about-portrait{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:28px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(212,175,110,0.35), transparent 55%),
+      radial-gradient(circle at 75% 80%, rgba(138,107,214,0.4), transparent 55%),
+      linear-gradient(160deg, #211a30, #0d0a15);
+    border:1px solid var(--border-soft);
+    display:flex;
+    align-items:flex-end;
+    padding:28px;
+  }
+  .about-portrait-img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+  }
+  .about-portrait::before{
+    content:'';
+    position:absolute; inset:0;
+    z-index:1;
+    mix-blend-mode:screen;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 40% 70%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.5), transparent);
+    opacity:0.8;
+  }
+  .about-portrait::after{
+    content:'';
+    position:absolute; inset:0;
+    z-index:1;
+    background:linear-gradient(180deg, rgba(10,8,16,0.05) 30%, rgba(10,8,16,0.9) 100%);
+  }
+  .about-portrait-tag{
+    position:relative;
+    z-index:2;
+    padding:16px 20px;
+    border-radius:16px;
+    background:rgba(10,8,16,0.55);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.12);
+    width:100%;
+  }
+  .about-portrait-tag .name{font-family:var(--font-display); font-size:1.5rem; color:var(--text-main);}
+  .about-portrait-tag .role{font-size:12px; color:var(--gold-light); letter-spacing:0.05em; margin-top:2px;}
+
+  .about-content h2{margin-bottom:22px;}
+  .about-content p{margin-bottom:18px; font-size:1.02rem;}
+  .about-facts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:32px;
+  }
+  .fact{
+    display:flex;
+    gap:12px;
+    padding:16px;
+    border-radius:14px;
+    background:var(--surface);
+    border:1px solid var(--border-soft);
+  }
+  .fact-num{font-family:var(--font-display); font-size:1.3rem; color:var(--gold-light); min-width:34px;}
+  .fact-text{font-size:13px; color:var(--text-muted); line-height:1.45;}
+
+  /* ---------- BENTO SERVICES ---------- */
+  .bento-grid{
+    display:grid;
+    grid-template-columns:repeat(12, 1fr);
+    grid-auto-rows:minmax(180px, auto);
+    gap:18px;
+  }
+  .bento-cell{
+    position:relative;
+    background:linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border:1px solid var(--border-soft);
+    border-radius:22px;
+    padding:32px;
+    overflow:hidden;
+    transition:transform 0.35s var(--ease-out-soft), border-color 0.35s;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+  }
+  .bento-cell:hover{transform:translateY(-6px); border-color:var(--border);}
+  .bento-cell .cell-icon{
+    font-family:var(--font-display);
+    font-size:2.4rem;
+    color:var(--gold-light);
+    margin-bottom:auto;
+  }
+  .bento-cell h3{margin-bottom:10px; margin-top:20px;}
+  .bento-cell p{font-size:13.8px;}
+  .bento-large{grid-column:span 7; grid-row:span 2;}
+  .bento-tall{grid-column:span 5; grid-row:span 2;}
+  .bento-wide{grid-column:span 8;}
+  .bento-square{grid-column:span 4;}
+
+  .bento-photo{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+    opacity:0.4;
+  }
+  .bento-large::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(200deg, rgba(10,8,16,0.55) 0%, rgba(10,8,16,0.88) 65%, rgba(10,8,16,0.96) 100%);
+    z-index:1;
+  }
+  .bento-large::after{
+    content:'';
+    position:absolute;
+    top:-30%; right:-20%;
+    width:60%; height:60%;
+    background:radial-gradient(circle, rgba(138,107,214,0.35), transparent 70%);
+    filter:blur(50px);
+    z-index:1;
+  }
+  .bento-large > *:not(.bento-photo){position:relative; z-index:2;}
+  .bento-large h3{font-size:clamp(1.6rem,1.3rem+1vw,2.2rem);}
+  .bento-tag{
+    display:inline-block;
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid var(--border);
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:16px;
+    align-self:flex-start;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .process-step{
+    padding:36px 26px;
+    border-radius:20px;
+    background:var(--surface);
+    border:1px solid var(--border-soft);
+    position:relative;
+  }
+  .process-step .step-num{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:2.6rem;
+    color:transparent;
+    -webkit-text-stroke:1.3px var(--gold);
+    margin-bottom:18px;
+    display:block;
+  }
+  .process-step h3{font-size:1.15rem; margin-bottom:10px;}
+  .process-step p{font-size:13.5px;}
+  .process-step:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    top:50%; right:-20px;
+    width:20px; height:1px;
+    background:linear-gradient(90deg, var(--border), transparent);
+    display:none;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .testi-card{
+    padding:44px;
+    border-radius:24px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+    border:1px solid var(--border-soft);
+    backdrop-filter:blur(10px);
+  }
+  .testi-quote{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem);
+    line-height:1.4;
+    color:var(--text-main);
+    margin-bottom:28px;
+  }
+  .testi-quote::before{content:'“'; color:var(--gold); margin-right:2px;}
+  .testi-person{display:flex; align-items:center; gap:14px;}
+  .testi-avatar{
+    width:46px; height:46px; border-radius:50%;
+    background:linear-gradient(135deg, var(--gold), var(--violet));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); color:#0a0810; font-size:1.1rem;
+    object-fit:cover;
+    flex-shrink:0;
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .testi-person .p-name{font-size:14px; font-weight:600; color:var(--text-main);}
+  .testi-person .p-role{font-size:12.5px; color:var(--text-dim);}
+  .testi-stars{color:var(--gold); font-size:13px; margin-top:16px; letter-spacing:2px;}
+
+  /* ---------- PRICING ---------- */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    align-items:stretch;
+  }
+  .price-card{
+    padding:40px 34px;
+    border-radius:24px;
+    background:var(--surface);
+    border:1px solid var(--border-soft);
+    display:flex;
+    flex-direction:column;
+    transition:transform 0.35s var(--ease-out-soft);
+  }
+  .price-card:hover{transform:translateY(-6px);}
+  .price-card.featured{
+    background:linear-gradient(165deg, rgba(212,175,110,0.14), rgba(138,107,214,0.08));
+    border:1px solid var(--border);
+    position:relative;
+    transform:scale(1.03);
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+  }
+  .price-card.featured:hover{transform:scale(1.03) translateY(-6px);}
+  .price-badge{
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+    background:linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+    color:#211405;
+    font-size:11px; font-weight:700; letter-spacing:0.05em;
+    padding:7px 18px; border-radius:100px;
+    white-space:nowrap;
+  }
+  .price-name{font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;}
+  .price-amount{
+    font-family:var(--font-display);
+    font-size:2.8rem;
+    color:var(--text-main);
+    margin-bottom:4px;
+  }
+  .price-amount span{font-size:1rem; font-family:var(--font-body); color:var(--text-dim);}
+  .price-desc{font-size:13.5px; margin-bottom:28px; color:var(--text-muted);}
+  .price-features{margin-bottom:32px; flex:1;}
+  .price-features li{
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:13.8px; color:var(--text-muted);
+    padding:9px 0;
+    border-top:1px solid var(--border-soft);
+  }
+  .price-features li:first-child{border-top:none;}
+  .price-features li .ico{color:var(--gold); flex-shrink:0;}
+  .price-card .btn{width:100%; justify-content:center;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:800px;}
+  .faq-item{
+    border-bottom:1px solid var(--border-soft);
+  }
+  .faq-item summary{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:26px 4px;
+    cursor:pointer;
+    font-family:var(--font-display);
+    font-size:1.2rem;
+    color:var(--text-main);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-plus{
+    font-size:1.4rem; color:var(--gold);
+    transition:transform 0.3s var(--ease-out-soft);
+    flex-shrink:0; margin-left:20px;
+  }
+  .faq-item[open] .faq-plus{transform:rotate(45deg);}
+  .faq-answer{padding:0 4px 26px; font-size:14.5px; max-width:680px;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    position:relative;
+    border-radius:32px;
+    padding:90px 60px;
+    text-align:center;
+    overflow:hidden;
+    background:linear-gradient(160deg, rgba(138,107,214,0.18), rgba(212,175,110,0.1));
+    border:1px solid var(--border);
+  }
+  .final-cta > img.final-cta-bg{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+    opacity:0.4;
+  }
+  .final-cta::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(600px 400px at 50% 0%, rgba(212,175,110,0.25), transparent 60%),
+      linear-gradient(180deg, rgba(10,8,16,0.4) 0%, rgba(10,8,16,0.75) 100%);
+    z-index:0;
+  }
+  .final-cta > *{position:relative; z-index:1;}
+  .final-cta h2{margin-bottom:20px;}
+  .final-cta p{max-width:520px; margin:0 auto 40px; font-size:1.05rem;}
+  .final-actions{display:flex; gap:20px; justify-content:center; flex-wrap:wrap;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:80px 0 40px;
+    border-top:1px solid var(--border-soft);
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:64px;
+  }
+  .footer-brand p{font-size:13.8px; max-width:280px; margin-top:16px;}
+  .footer-col h4{
+    font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--text-dim); margin-bottom:18px; font-weight:600;
+  }
+  .footer-col li{margin-bottom:12px;}
+  .footer-col a{font-size:13.8px; color:var(--text-muted); transition:color 0.25s;}
+  .footer-col a:hover{color:var(--gold-light);}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:32px; border-top:1px solid var(--border-soft);
+    flex-wrap:wrap; gap:16px;
+  }
+  .footer-bottom span{font-size:12.5px; color:var(--text-dim);}
+  .social-row{display:flex; gap:14px;}
+  .social-row a{
+    width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--surface); border:1px solid var(--border-soft);
+    font-size:14px; transition:all 0.3s;
+  }
+  .social-row a:hover{background:var(--gold); color:#0a0810; border-color:var(--gold);}
+
+  /* ---------- REVEAL / ENTRANCE ---------- */
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity 0.8s var(--ease-out-soft), transform 0.8s var(--ease-out-soft);
+  }
+  .reveal.visible{opacity:1; transform:translateY(0);}
+  .fade-up{animation:fade-up 0.7s var(--ease-out-soft) backwards;}
+  @keyframes fade-up{from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);}}
+  .stagger > *:nth-child(1){animation-delay:.05s;}
+  .stagger > *:nth-child(2){animation-delay:.15s;}
+  .stagger > *:nth-child(3){animation-delay:.25s;}
+  .stagger > *:nth-child(4){animation-delay:.35s;}
+  .stagger > *:nth-child(5){animation-delay:.45s;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    .nav-links{display:none;}
+    .burger{display:flex; width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border-soft);align-items:center;justify-content:center;font-size:18px;}
+    .hero{padding:150px 0 80px;}
+    .hero-inner{grid-template-columns:1fr; gap:64px;}
+    .hero-visual{order:-1; max-width:340px; margin:0 auto;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-portrait{max-width:360px; margin:0 auto;}
+    .bento-large,.bento-tall,.bento-wide,.bento-square{grid-column:span 12; grid-row:span 1;}
+    .process-grid{grid-template-columns:1fr 1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .pricing-grid{grid-template-columns:1fr; max-width:420px; margin:0 auto;}
+    .price-card.featured{transform:none;}
+    .price-card.featured:hover{transform:translateY(-6px);}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:32px;}
+    section{padding:88px 0;}
+  }
+  @media (max-width: 560px){
+    .wrap{padding:0 20px;}
+    .proof-inner{justify-content:flex-start;}
+    .proof-item{min-width:45%;}
+    .process-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column; align-items:flex-start;}
+    .final-cta{padding:60px 28px;}
+    .hero-stats{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="aurora-orb orb-1"></div>
+<div class="aurora-orb orb-2"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">O</span>
+      <span>
+        Оксана Соколова
+        <span class="logo-sub">Квантовая нумерология</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Обо мне</a>
+      <a href="#services">Услуги</a>
+      <a href="#process">Как это устроено</a>
+      <a href="#testimonials">Отзывы</a>
+      <a href="#pricing">Цены</a>
+      <a href="#faq">Вопросы</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#pricing" class="btn btn-primary btn-sm">Записаться</a>
+      <div class="burger">☰</div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-text stagger">
+      <div class="hero-badge fade-up">
+        <span class="dot"></span>
+        <span>Приём в Ставрополе и онлайн по всему миру</span>
+      </div>
+      <h1 class="fade-up">Числа знают то,<br>что вы ещё <em>не осознали</em></h1>
+      <p class="hero-sub fade-up">Квантовая нумерология Оксаны Соколовой соединяет древний расчёт даты рождения с современным взглядом на энергию решений. Разбор личного кода, матрицы судьбы и денежного потенциала — без эзотерических штампов, языком, который понятен здесь и сейчас.</p>
+      <div class="hero-actions fade-up">
+        <a href="#pricing" class="btn btn-primary">Записаться на разбор</a>
+        <a href="#services" class="link-cta">
+          Посмотреть услуги
+          <span>→</span>
+        </a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div class="hero-stat">
+          <b>500+</b>
+          <span>Квантовых разборов</span>
+        </div>
+        <div class="hero-stat">
+          <b>8 лет</b>
+          <span>Практики</span>
+        </div>
+        <div class="hero-stat">
+          <b>4.9</b>
+          <span>Средняя оценка</span>
+        </div>
+        <div class="hero-stat">
+          <b>17</b>
+          <span>Стран, где живут клиенты</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="wheel-wrap">
+        <div class="wheel-glow"></div>
+        <div class="wheel-photo">
+          <img src="https://images.unsplash.com/photo-1526835746352-0b9da4054862?q=80&w=800&auto=format&fit=crop" alt="Оксана Соколова — квантовый нумеролог" loading="lazy">
+        </div>
+        <svg viewBox="0 0 460 460" class="wheel-ring-outer" style="position:relative;z-index:2;">
+          <circle cx="230" cy="230" r="210" fill="none" stroke="rgba(212,175,110,0.25)" stroke-width="1"/>
+          <circle cx="230" cy="230" r="210" fill="none" stroke="url(#gradRing)" stroke-width="1.4" stroke-dasharray="4 10"/>
+          <g font-family="Playfair Display" font-size="22" fill="rgba(243,239,230,0.75)" text-anchor="middle">
+            <text x="230" y="36">1</text>
+            <text x="371" y="80">2</text>
+            <text x="420" y="230">3</text>
+            <text x="371" y="386">4</text>
+            <text x="230" y="434">5</text>
+            <text x="88" y="386">6</text>
+            <text x="40" y="230">7</text>
+            <text x="88" y="80">8</text>
+          </g>
+          <defs>
+            <linearGradient id="gradRing" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#d4af6a"/>
+              <stop offset="100%" stop-color="#8a6bd6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg viewBox="0 0 460 460" class="wheel-ring-inner" style="position:absolute; inset:0; z-index:2;">
+          <circle cx="230" cy="230" r="150" fill="none" stroke="rgba(138,107,214,0.3)" stroke-width="1"/>
+          <polygon points="230,90 342,160 342,300 230,370 118,300 118,160" fill="none" stroke="rgba(212,175,110,0.35)" stroke-width="1"/>
+        </svg>
+        <div class="wheel-card">
+          <div class="wc-label">Ваше квантовое число</div>
+          <div class="wc-num">11 / 2</div>
+          <div class="wc-desc">Число интуиции и трансформации — путь к переосмыслению отношений с деньгами</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SOCIAL PROOF -->
+<section class="proof" style="padding-top:0; padding-bottom:0;">
+  <div class="wrap proof-inner">
+    <div class="proof-item reveal"><b>500+</b><span>Персональных разборов</span></div>
+    <div class="proof-item reveal"><b>8</b><span>Лет практики</span></div>
+    <div class="proof-item reveal"><b>17</b><span>Стран</span></div>
+    <div class="proof-item reveal"><b>96%</b><span>Возвращаются повторно</span></div>
+    <div class="proof-item reveal"><b>4.9/5</b><span>Средний рейтинг</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-portrait reveal">
+      <img class="about-portrait-img" src="https://images.unsplash.com/photo-1536766768598-e09213fdcf22?q=80&w=900&auto=format&fit=crop" alt="Оксана Соколова, квантовый нумеролог" loading="lazy">
+      <div class="about-portrait-tag">
+        <div class="name">Оксана Соколова</div>
+        <div class="role">Квантовый нумеролог · г. Ставрополь</div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <span class="eyebrow">Обо мне</span>
+      <h2 style="margin-top:14px;">Нумерология — это язык, а не гадание</h2>
+      <p>Я 8 лет изучаю числовые коды рождения и их влияние на решения, отношения и деньги. Начинала с классической пифагорейской нумерологии, но мне стало тесно в рамках готовых трактовок — так родился авторский метод «квантового разбора»: я соединяю точный расчёт матрицы с работой с текущим состоянием клиента, чтобы прогноз был не абстрактным, а применимым уже на этой неделе.</p>
+      <p>За плечами — сертификация Московской школы нумерологии (2018), два авторских курса и практика с клиентами из России, Казахстана, Германии и ОАЭ. Провожу консультации очно в Ставрополе и онлайн в Zoom/Telegram — формат не влияет на глубину разбора.</p>
+      <div class="about-facts">
+        <div class="fact">
+          <span class="fact-num">01</span>
+          <span class="fact-text">Сертифицированный нумеролог, диплом Московской школы нумерологии, 2018</span>
+        </div>
+        <div class="fact">
+          <span class="fact-num">02</span>
+          <span class="fact-text">Автор методики «Квантовый код рождения» и курса «Денежная матрица»</span>
+        </div>
+        <div class="fact">
+          <span class="fact-num">03</span>
+          <span class="fact-text">Более 500 личных разборов и 40 групповых вебинаров с 2018 года</span>
+        </div>
+        <div class="fact">
+          <span class="fact-num">04</span>
+          <span class="fact-text">Работаю очно в Ставрополе и онлайн в любом часовом поясе</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES BENTO -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Услуги</span>
+      <h2>Разборы под каждый запрос — от знакомства с собой до денежного кода</h2>
+      <p>Каждый разбор — это расчёт по дате и имени, письменный отчёт и разговор о том, как применить числа в реальной жизни.</p>
+    </div>
+
+    <div class="bento-grid reveal">
+      <div class="bento-cell bento-large">
+        <img class="bento-photo" src="https://images.unsplash.com/photo-1560427450-00fa9481f01e?q=80&w=1200&auto=format&fit=crop" alt="" loading="lazy">
+        <span class="bento-tag">Флагманская услуга</span>
+        <span class="cell-icon">✦</span>
+        <h3>Квантовый разбор личности</h3>
+        <p>Полный расчёт матрицы судьбы: число жизненного пути, кармические долги, таланты и слепые зоны. 90-минутная сессия + PDF-отчёт на 20+ страниц + аудиозапись встречи.</p>
+      </div>
+      <div class="bento-cell bento-tall">
+        <span class="cell-icon">◈</span>
+        <h3>Совместимость пары</h3>
+        <p>Сравнение матриц двух людей: точки притяжения, зоны конфликта и рекомендации, как усилить союз. Подходит для пар, партнёров по бизнесу и родителей с детьми.</p>
+      </div>
+      <div class="bento-cell bento-tall">
+        <span class="cell-icon">☾</span>
+        <h3>Денежный код</h3>
+        <p>Расчёт финансовой матрицы: блоки, мешающие доходу, благоприятные периоды для сделок и число для управления накоплениями.</p>
+      </div>
+      <div class="bento-cell bento-wide">
+        <span class="cell-icon">✧</span>
+        <h3>Нумерология имени</h3>
+        <p>Анализ имени и фамилии — как звучание влияет на восприятие вас миром. Полезно перед сменой фамилии, неймингом бизнеса или выбором имени ребёнку.</p>
+      </div>
+      <div class="bento-cell bento-square">
+        <span class="cell-icon">◉</span>
+        <h3>Прогноз на год</h3>
+        <p>Персональный нумерологический календарь на 12 месяцев: удачные даты, периоды спада и точки роста.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Как это устроено</span>
+      <h2>Путь от заявки до готового разбора — четыре шага</h2>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <h3>Заявка и бриф</h3>
+        <p>Оставляете дату рождения, полное имя и главный вопрос — я подбираю формат разбора под запрос.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <h3>Расчёт матрицы</h3>
+        <p>В течение 2-3 дней провожу полный расчёт и готовлю персональный конспект с ключевыми числами.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <h3>Сессия</h3>
+        <p>Встречаемся очно в Ставрополе или в Zoom/Telegram. Разбираю каждое число простым языком, без эзотерического жаргона.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <h3>Практики и поддержка</h3>
+        <p>Вы получаете PDF-отчёт, аудиозапись сессии и 7 дней текстовой поддержки в Telegram для вопросов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Отзывы</span>
+      <h2>Что говорят те, кто уже прошёл разбор</h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <p class="testi-quote">Пришла из любопытства, а ушла с чётким пониманием, почему я третий год не могу закрыть один и тот же денежный вопрос. Оксана объяснила это через числа рождения так спокойно и конкретно, что стало не мистикой, а инструкцией к действию. Через два месяца после сессии закрыла кредит, который «висел» три года.</p>
+        <div class="testi-person">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="Марина Дегтярёва" loading="lazy">
+          <div>
+            <div class="p-name">Марина Дегтярёва</div>
+            <div class="p-role">34 года, Ставрополь · разбор «Денежный код»</div>
+          </div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">Заказывал разбор совместимости с партнёром по бизнесу перед подписанием договора. Скептически относился к нумерологии, но Оксана не гадала «на кофейной гуще» — показала конкретные зоны, где у нас будут трения по срокам и деньгам. Спустя год могу сказать: совпало почти один в один, и мы заранее выстроили процессы с учётом этого.</p>
+        <div class="testi-person">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=200&auto=format&fit=crop" alt="Дмитрий Артёмов" loading="lazy">
+          <div>
+            <div class="p-name">Дмитрий Артёмов</div>
+            <div class="p-role">41 год, Москва · разбор «Совместимость»</div>
+          </div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <span class="eyebrow">Стоимость</span>
+      <h2>Выберите глубину погружения</h2>
+      <p style="margin:0 auto;">Оплата картой, переводом или через СБП. Рассрочка доступна для годового сопровождения.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-name">Базовый разбор</div>
+        <div class="price-amount">3 900 ₽</div>
+        <div class="price-desc">Знакомство с личным кодом — отличная точка входа</div>
+        <ul class="price-features">
+          <li><span class="ico">✦</span>Расчёт числа жизненного пути</li>
+          <li><span class="ico">✦</span>PDF-отчёт на 8 страниц</li>
+          <li><span class="ico">✦</span>45-минутная сессия онлайн</li>
+          <li><span class="ico">✦</span>Ответы на 2 уточняющих вопроса</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Записаться</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Популярный выбор</div>
+        <div class="price-name">Квантовый расширенный</div>
+        <div class="price-amount">7 500 ₽</div>
+        <div class="price-desc">Полная матрица судьбы и денежный код в одной сессии</div>
+        <ul class="price-features">
+          <li><span class="ico">✦</span>Полный расчёт матрицы судьбы</li>
+          <li><span class="ico">✦</span>PDF-отчёт на 20+ страниц</li>
+          <li><span class="ico">✦</span>90-минутная сессия очно или онлайн</li>
+          <li><span class="ico">✦</span>Аудиозапись встречи</li>
+          <li><span class="ico">✦</span>Рекомендации и практики на 3 месяца</li>
+          <li><span class="ico">✦</span>7 дней поддержки в Telegram</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Записаться</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Годовое сопровождение</div>
+        <div class="price-amount">42 000 ₽<span> / год</span></div>
+        <div class="price-desc">Персональное кураторство на 12 месяцев</div>
+        <ul class="price-features">
+          <li><span class="ico">✦</span>Ежемесячный разбор текущего периода</li>
+          <li><span class="ico">✦</span>Персональный нумерологический календарь</li>
+          <li><span class="ico">✦</span>Приоритетная запись вне очереди</li>
+          <li><span class="ico">✦</span>Безлимитный чат поддержки</li>
+          <li><span class="ico">✦</span>Рассрочка на 6 или 12 месяцев</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Обсудить</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Вопросы и ответы</span>
+      <h2>То, что обычно спрашивают перед записью</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item" open>
+        <summary>Чем «квантовая» нумерология отличается от классической?<span class="faq-plus">+</span></summary>
+        <div class="faq-answer"><p>Классическая нумерология даёт статичную трактовку чисел рождения. В своём методе я дополняю расчёт работой с текущим состоянием и запросом клиента — числа показывают потенциал, а разговор помогает понять, как именно применить его в вашей ситуации здесь и сейчас.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Нужно ли приезжать в Ставрополь очно?<span class="faq-plus">+</span></summary>
+        <div class="faq-answer"><p>Нет, большинство клиентов проходят разбор онлайн через Zoom или звонок в Telegram — глубина консультации от этого не меняется. Очный приём доступен по предварительной записи для тех, кто находится в Ставрополе или готов приехать.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Сколько ждать разбор после оплаты?<span class="faq-plus">+</span></summary>
+        <div class="faq-answer"><p>Расчёт матрицы занимает 2-3 рабочих дня, после чего мы согласуем удобное время сессии. В случае срочного запроса возможен приоритетный расчёт в течение 24 часов — уточняйте при записи.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Что если моя дата рождения даёт «сложные» числа?<span class="faq-plus">+</span></summary>
+        <div class="faq-answer"><p>В нумерологии нет «плохих» чисел — есть числа с более сложным потенциалом, который требует осознанной работы. Моя задача — показать, как обратить кармические числа и долги в ресурс, а не пугать прогнозами.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Работаете с парами и детьми?<span class="faq-plus">+</span></summary>
+        <div class="faq-answer"><p>Да, разбор совместимости подходит для романтических пар, партнёров по бизнесу и родителей с детьми. Для несовершеннолетних разбор провожу только с согласия и в присутствии родителя.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Как оплатить консультацию?<span class="faq-plus">+</span></summary>
+        <div class="faq-answer"><p>Принимаю оплату картой, переводом на карту и через СБП. Для годового сопровождения доступна рассрочка на 6 или 12 месяцев без переплаты.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="wrap">
+    <div class="final-cta reveal">
+      <img class="final-cta-bg" src="https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?q=80&w=1600&auto=format&fit=crop" alt="" loading="lazy">
+      <span class="eyebrow">Готовы узнать свой код?</span>
+      <h2 style="margin-top:18px;">Первый шаг — назвать дату своего рождения</h2>
+      <p>Оставьте заявку, и я свяжусь с вами в течение дня, чтобы подобрать формат разбора и удобное время сессии.</p>
+      <div class="final-actions">
+        <a href="https://t.me/oksana_numerolog" class="btn btn-primary">Написать в Telegram</a>
+        <a href="tel:+79285551407" class="btn btn-ghost">Позвонить: +7 928 555-14-07</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <span class="logo-mark">O</span>
+          <span>Оксана Соколова<span class="logo-sub">Квантовая нумерология</span></span>
+        </a>
+        <p>Квантовые разборы личного кода, матрицы судьбы и денежного потенциала. Приём очно в Ставрополе и онлайн по всему миру.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <ul>
+          <li><a href="#services">Квантовый разбор личности</a></li>
+          <li><a href="#services">Совместимость пары</a></li>
+          <li><a href="#services">Денежный код</a></li>
+          <li><a href="#services">Нумерология имени</a></li>
+          <li><a href="#services">Прогноз на год</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Информация</h4>
+        <ul>
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#process">Как это устроено</a></li>
+          <li><a href="#pricing">Цены</a></li>
+          <li><a href="#faq">Вопросы и ответы</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+79285551407">+7 928 555-14-07</a></li>
+          <li><a href="mailto:oksana.numerolog@yandex.ru">oksana.numerolog@yandex.ru</a></li>
+          <li><a href="#">г. Ставрополь, ул. Мира, 288, офис 14</a></li>
+          <li><a href="#">Пн–Сб, 10:00–20:00 (МСК+0)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Оксана Соколова. Квантовая нумерология. Все права защищены.</span>
+      <div class="social-row">
+        <a href="https://t.me/oksana_numerolog" title="Telegram">✈</a>
+        <a href="https://wa.me/79285551407" title="WhatsApp">☎</a>
+        <a href="https://instagram.com/oksana.quantum.numerology" title="Instagram">◎</a>
+        <a href="mailto:oksana.numerolog@yandex.ru" title="Email">✉</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Only one FAQ item open at a time
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
