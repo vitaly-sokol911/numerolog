@@ -7,9 +7,10 @@
      шрифты Google и фотографии Unsplash. Любой посторонний скрипт браузер заблокирует.
      ВАЖНО: после правки кода внутри тегов style или script хеши нужно пересчитать,
      иначе браузер отключит оформление и калькулятор. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://images.unsplash.com; style-src 'sha256-CGNStrcHarwXdmx6X7xMCUUAAbifAfZtaFEJq2feCB0=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-pXiVb+uXYEY3tB3bOZfJUCpebir6F2fZWIOXlEwcXis='; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://images.unsplash.com; style-src 'sha256-6XAvBtUEP/xMjH1/fc3xHBvOmtTexfrc/H55Y6cz4g0=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-DTvonqikWJd0lexAovAE75GDFUaY0fifHC3NPywyMFQ='; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no">
 <meta name="theme-color" content="#0a0810">
 <title>Оксана Соколова — Квантовый нумеролог | Ставрополь</title>
 <meta name="description" content="Квантовая нумерология в Ставрополе и онлайн. Разбор личного кода, матрица судьбы, совместимость, денежный код. Оксана Соколова — 8 лет практики, 500+ разборов.">
@@ -232,6 +233,7 @@
     display:inline-flex;
     align-items:center;
     gap:10px;
+    font-family:inherit;
     padding:13px 26px;
     border-radius:100px;
     font-size:14px;
@@ -906,13 +908,101 @@
   }
   .footer-bottom span{font-size:12.5px; color:var(--text-dim);}
   .social-row{display:flex; gap:14px;}
-  .social-row a{
+  .social-row button{
     width:36px; height:36px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     background:var(--surface); border:1px solid var(--border-soft);
-    font-size:14px; transition:all 0.3s;
+    color:var(--text-main);
+    font-size:14px; cursor:pointer; transition:all 0.3s;
   }
-  .social-row a:hover{background:var(--gold); color:#0a0810; border-color:var(--gold);}
+  .social-row button:hover{background:var(--gold); color:#0a0810; border-color:var(--gold);}
+  .footer-link{
+    padding:0; border:none; background:none;
+    font-family:var(--font-body); font-size:13.8px;
+    color:var(--gold-light); cursor:pointer;
+    transition:color 0.25s;
+  }
+  .footer-link:hover{color:var(--gold);}
+
+  /* ---------- BOOKING MODAL ---------- */
+  .modal{
+    position:fixed; inset:0; z-index:200;
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+  }
+  .modal[hidden]{display:none;}
+  .modal-backdrop{
+    position:absolute; inset:0;
+    background:rgba(6,5,10,0.78);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+  .modal-card{
+    position:relative;
+    width:100%; max-width:460px;
+    margin:auto;
+    padding:36px 34px 30px;
+    border-radius:26px;
+    background:linear-gradient(165deg, rgba(36,29,54,0.97), rgba(13,10,21,0.98));
+    border:1px solid var(--border);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.12), 0 40px 90px rgba(0,0,0,0.6);
+    animation:modal-in 0.35s var(--ease-out-soft);
+  }
+  @keyframes modal-in{
+    from{opacity:0; transform:translateY(18px) scale(0.98);}
+    to{opacity:1; transform:none;}
+  }
+  .modal-close{
+    position:absolute; top:14px; right:14px;
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--surface);
+    border:1px solid var(--border-soft);
+    color:var(--text-muted);
+    font-family:inherit; font-size:15px;
+    cursor:pointer;
+    transition:color 0.25s, border-color 0.25s;
+  }
+  .modal-close:hover{color:var(--text-main); border-color:var(--border);}
+  .modal-card h3{margin:12px 0 8px;}
+  .modal-sub{font-size:13.5px; margin-bottom:22px;}
+  .field{margin-bottom:14px;}
+  .field label{
+    display:block;
+    font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--text-dim); margin-bottom:7px;
+  }
+  .field input{
+    width:100%;
+    font-family:var(--font-body); font-size:14px;
+    padding:12px 16px;
+    border-radius:12px;
+    background:rgba(10,8,16,0.6);
+    border:1px solid var(--border-soft);
+    color:var(--text-main);
+    transition:border-color 0.25s;
+  }
+  .field input::placeholder{color:#6f6784;}
+  .field input:hover{border-color:var(--border);}
+  .field input.is-invalid{border-color:#f0a58c;}
+  .form-error{font-size:12.5px; color:#f0a58c; margin-bottom:12px;}
+  .form-error[hidden]{display:none;}
+  #bookingForm .btn{width:100%; justify-content:center; margin-top:6px;}
+  .form-note{font-size:11px; line-height:1.45; color:var(--text-dim); margin-top:12px;}
+  .modal-done{text-align:center; padding:6px 0 2px;}
+  .modal-done[hidden]{display:none;}
+  .modal-done p{font-size:14px; margin:10px 0 24px;}
+  .done-mark{
+    width:58px; height:58px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; color:#211405;
+    background:linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+    box-shadow:0 10px 30px rgba(212,175,110,0.3);
+  }
 
   /* ---------- REVEAL / ENTRANCE ---------- */
   .reveal{
@@ -995,7 +1085,7 @@
       <a href="#faq">Вопросы</a>
     </div>
     <div class="nav-cta">
-      <a href="#pricing" class="btn btn-primary btn-sm">Записаться</a>
+      <button class="btn btn-primary btn-sm" type="button" data-book>Записаться</button>
       <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">☰</button>
     </div>
   </div>
@@ -1009,7 +1099,7 @@
   <a href="#testimonials">Отзывы</a>
   <a href="#pricing">Цены</a>
   <a href="#faq">Вопросы</a>
-  <a href="#pricing" class="btn btn-primary">Записаться на разбор</a>
+  <button class="btn btn-primary" type="button" data-book>Записаться на разбор</button>
 </div>
 
 <!-- HERO -->
@@ -1023,7 +1113,7 @@
       <h1 class="fade-up">Числа знают то,<br>что вы ещё <em>не осознали</em></h1>
       <p class="hero-sub fade-up">Считаю матрицу по дате рождения и объясняю её без эзотерических штампов: личный код, совместимость, деньги — языком, на котором можно принимать решения.</p>
       <div class="hero-actions fade-up">
-        <a href="#pricing" class="btn btn-primary">Записаться на разбор</a>
+        <button class="btn btn-primary" type="button" data-book>Записаться на разбор</button>
         <a href="#services" class="link-cta">
           Посмотреть услуги
           <span>→</span>
@@ -1259,7 +1349,7 @@
           <li><span class="ico" aria-hidden="true">✦</span>45-минутная сессия онлайн</li>
           <li><span class="ico" aria-hidden="true">✦</span>Ответы на 2 уточняющих вопроса</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost">Записаться</a>
+        <button class="btn btn-ghost" type="button" data-book data-plan="Базовый разбор">Записаться</button>
       </div>
       <div class="price-card featured">
         <div class="price-badge">Популярный выбор</div>
@@ -1274,7 +1364,7 @@
           <li><span class="ico" aria-hidden="true">✦</span>Рекомендации и практики на 3 месяца</li>
           <li><span class="ico" aria-hidden="true">✦</span>7 дней поддержки в Telegram</li>
         </ul>
-        <a href="#contact" class="btn btn-primary">Записаться</a>
+        <button class="btn btn-primary" type="button" data-book data-plan="Квантовый расширенный">Записаться</button>
       </div>
       <div class="price-card">
         <div class="price-name">Годовое сопровождение</div>
@@ -1287,7 +1377,7 @@
           <li><span class="ico" aria-hidden="true">✦</span>Безлимитный чат поддержки</li>
           <li><span class="ico" aria-hidden="true">✦</span>Рассрочка на 6 или 12 месяцев</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost">Обсудить</a>
+        <button class="btn btn-ghost" type="button" data-book data-plan="Годовое сопровождение">Обсудить</button>
       </div>
     </div>
   </div>
@@ -1338,8 +1428,8 @@
       <h2>Первый шаг — назвать дату своего рождения</h2>
       <p>Оставьте заявку, и я свяжусь с вами в течение дня, чтобы подобрать формат разбора и удобное время сессии.</p>
       <div class="final-actions">
-        <a href="https://t.me/oksana_numerolog" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
-        <a href="tel:+79285551407" class="btn btn-ghost">Позвонить: +7 928 555-14-07</a>
+        <button class="btn btn-primary" type="button" data-book>Записаться на разбор</button>
+        <button class="btn btn-ghost" type="button" data-book data-title="Заказать звонок">Заказать звонок</button>
       </div>
     </div>
   </div>
@@ -1378,8 +1468,9 @@
       <div class="footer-col">
         <h4>Контакты</h4>
         <ul>
-          <li><a href="tel:+79285551407">+7 928 555-14-07</a></li>
-          <li><a href="mailto:oksana.numerolog@yandex.ru">oksana.numerolog@yandex.ru</a></li>
+          <li><button class="footer-link" type="button" data-book>Записаться на разбор</button></li>
+          <li><button class="footer-link" type="button" data-book data-title="Заказать звонок">Заказать звонок</button></li>
+          <li><span>hello@oksana-numerolog.ru</span></li>
           <li><span>г. Ставрополь, ул. Мира, 288, офис 14</span></li>
           <li><span>Пн–Сб, 10:00–20:00 (МСК)</span></li>
         </ul>
@@ -1388,14 +1479,52 @@
     <div class="footer-bottom">
       <span>© 2026 Оксана Соколова. Квантовая нумерология. Все права защищены.</span>
       <div class="social-row">
-        <a href="https://t.me/oksana_numerolog" title="Telegram" aria-label="Telegram" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">✈</span></a>
-        <a href="https://wa.me/79285551407" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">☎</span></a>
-        <a href="https://instagram.com/oksana.quantum.numerology" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◎</span></a>
-        <a href="mailto:oksana.numerolog@yandex.ru" title="Электронная почта" aria-label="Электронная почта"><span aria-hidden="true">✉</span></a>
+        <button type="button" data-book title="Написать в Telegram" aria-label="Написать в Telegram"><span aria-hidden="true">✈</span></button>
+        <button type="button" data-book title="Написать в WhatsApp" aria-label="Написать в WhatsApp"><span aria-hidden="true">☎</span></button>
+        <button type="button" data-book title="Написать в Instagram" aria-label="Написать в Instagram"><span aria-hidden="true">◎</span></button>
+        <button type="button" data-book title="Написать на почту" aria-label="Написать на почту"><span aria-hidden="true">✉</span></button>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal" id="bookingModal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" id="modalClose" aria-label="Закрыть окно">✕</button>
+
+    <div id="modalFormView">
+      <span class="eyebrow">Запись на разбор</span>
+      <h3 id="modalTitle">Оставьте заявку</h3>
+      <p class="modal-sub" id="modalSub">Свяжусь в течение дня, подберу формат разбора и удобное время.</p>
+      <form id="bookingForm" novalidate>
+        <div class="field">
+          <label for="bkName">Как к вам обращаться</label>
+          <input type="text" id="bkName" name="name" maxlength="60" autocomplete="name" placeholder="Имя">
+        </div>
+        <div class="field">
+          <label for="bkDate">Дата рождения</label>
+          <input type="date" id="bkDate" name="birthdate" min="1900-01-01">
+        </div>
+        <div class="field">
+          <label for="bkContact">Телефон или ник в Telegram</label>
+          <input type="text" id="bkContact" name="contact" maxlength="40" autocomplete="tel" placeholder="+7 900 000-00-00">
+        </div>
+        <p class="form-error" id="formError" role="alert" hidden></p>
+        <button class="btn btn-primary" type="submit">Отправить заявку</button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+      </form>
+    </div>
+
+    <div class="modal-done" id="modalDone" hidden>
+      <div class="done-mark" aria-hidden="true">✓</div>
+      <h3>Заявка принята</h3>
+      <p>Свяжусь с вами в течение дня и подберу формат разбора.</p>
+      <button class="btn btn-ghost" type="button" data-close>Закрыть</button>
+    </div>
+  </div>
+</div>
 
 <script>
 (function () {
@@ -1453,6 +1582,121 @@
         });
       }
     });
+  });
+
+  /* Booking modal */
+  var modal = document.getElementById('bookingModal');
+  var modalCard = modal.querySelector('.modal-card');
+  var modalClose = document.getElementById('modalClose');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalSub = document.getElementById('modalSub');
+  var formView = document.getElementById('modalFormView');
+  var doneView = document.getElementById('modalDone');
+  var bookingForm = document.getElementById('bookingForm');
+  var formError = document.getElementById('formError');
+  var bkName = document.getElementById('bkName');
+  var bkDate = document.getElementById('bkDate');
+  var bkContact = document.getElementById('bkContact');
+  var inputs = [bkName, bkDate, bkContact];
+  var lastFocused = null;
+
+  function openModal(trigger) {
+    lastFocused = trigger;
+    var title = trigger.getAttribute('data-title');
+    var plan = trigger.getAttribute('data-plan');
+    modalTitle.textContent = title || 'Оставьте заявку';
+    modalSub.textContent = plan
+      ? 'Тариф «' + plan + '». Свяжусь в течение дня и подберу удобное время.'
+      : 'Свяжусь в течение дня, подберу формат разбора и удобное время.';
+    formView.hidden = false;
+    doneView.hidden = true;
+    formError.hidden = true;
+    modal.hidden = false;
+    document.body.classList.add('menu-open');
+    bkName.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.classList.remove('menu-open');
+    bookingForm.reset();
+    inputs.forEach(function (el) { el.classList.remove('is-invalid'); });
+    if (lastFocused) { lastFocused.focus(); }
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) { return; }
+    var trigger = e.target.closest('[data-book]');
+    if (trigger) {
+      e.preventDefault();
+      if (!menu.hidden) { setMenu(false); }
+      openModal(trigger);
+      return;
+    }
+    if (e.target.closest('[data-close]')) { closeModal(); }
+  });
+  modalClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) { closeModal(); }
+  });
+
+  /* keep keyboard focus inside the open dialog */
+  modal.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') { return; }
+    var focusable = [].filter.call(
+      modalCard.querySelectorAll('button, input'),
+      function (el) { return !el.disabled && el.offsetParent !== null; }
+    );
+    if (!focusable.length) { return; }
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  bookingForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var missing = [];
+    inputs.forEach(function (el) { el.classList.remove('is-invalid'); });
+
+    if (bkName.value.trim().length < 2) {
+      bkName.classList.add('is-invalid');
+      missing.push('имя');
+    }
+    var parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(bkDate.value);
+    var dateOk = false;
+    if (parts) {
+      var y = Number(parts[1]), m = Number(parts[2]), d = Number(parts[3]);
+      var dt = new Date(y, m - 1, d);
+      dateOk = dt.getFullYear() === y && dt.getMonth() === m - 1 && dt.getDate() === d &&
+               y >= 1900 && dt <= new Date();
+    }
+    if (!dateOk) {
+      bkDate.classList.add('is-invalid');
+      missing.push('дату рождения');
+    }
+    if (bkContact.value.trim().length < 5) {
+      bkContact.classList.add('is-invalid');
+      missing.push('телефон или ник');
+    }
+
+    if (missing.length) {
+      formError.hidden = false;
+      formError.textContent = 'Проверьте ' + missing.join(', ') + '.';
+      var firstBad = modalCard.querySelector('.is-invalid');
+      if (firstBad) { firstBad.focus(); }
+      return;
+    }
+
+    formError.hidden = true;
+    formView.hidden = true;
+    doneView.hidden = false;
+    doneView.querySelector('.btn').focus();
   });
 
   /* Life-path calculator — the same reduction used in a real session */
