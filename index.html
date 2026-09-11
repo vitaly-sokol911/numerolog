@@ -3,8 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Политика безопасности: страница грузит только собственные стили и скрипт (сверяются по хешу),
+     шрифты Google и фотографии Unsplash. Любой посторонний скрипт браузер заблокирует.
+     ВАЖНО: после правки кода внутри тегов style или script хеши нужно пересчитать,
+     иначе браузер отключит оформление и калькулятор. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://images.unsplash.com; style-src 'sha256-CGNStrcHarwXdmx6X7xMCUUAAbifAfZtaFEJq2feCB0=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-pXiVb+uXYEY3tB3bOZfJUCpebir6F2fZWIOXlEwcXis='; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0810">
 <title>Оксана Соколова — Квантовый нумеролог | Ставрополь</title>
 <meta name="description" content="Квантовая нумерология в Ставрополе и онлайн. Разбор личного кода, матрица судьбы, совместимость, денежный код. Оксана Соколова — 8 лет практики, 500+ разборов.">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Оксана Соколова — квантовый нумеролог, Ставрополь">
+<meta property="og:description" content="Разбор личного кода, матрицы судьбы и денежного потенциала. Очно в Ставрополе и онлайн.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?q=80&w=1200&auto=format&fit=crop">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%230a0810'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23d4af6a' stroke-width='1.6' stroke-dasharray='3 6'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-size='30' fill='%23ecd7a3'%3E9%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,20 +31,18 @@
   :root{
     --bg-0:#0a0810;
     --bg-1:#0f0c17;
-    --bg-2:#15111f;
     --surface:rgba(255,255,255,0.045);
     --surface-strong:rgba(255,255,255,0.07);
     --border:rgba(212,175,110,0.18);
     --border-soft:rgba(255,255,255,0.09);
     --text-main:#f3efe6;
     --text-muted:#b3aac0;
-    --text-dim:#7c7490;
+    --text-dim:#8b83a0;
     --gold:#d4af6a;
     --gold-light:#ecd7a3;
     --gold-deep:#a9803f;
     --violet:#8a6bd6;
     --violet-light:#b39ff0;
-    --indigo:#5b4b9e;
 
     --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
     --ease-sine: cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -37,7 +52,7 @@
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; color-scheme:dark;}
 
   body{
     font-family:var(--font-body);
@@ -71,6 +86,11 @@
 
   ::selection{background:var(--gold-deep);color:#fff;}
 
+  :focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
   /* ---------- TYPOGRAPHY ---------- */
   .eyebrow{
     font-family:var(--font-body);
@@ -80,7 +100,7 @@
     text-transform:uppercase;
     color:var(--gold);
   }
-  h1,h2,h3,.serif{
+  h1,h2,h3{
     font-family:var(--font-display);
     font-weight:400;
     letter-spacing:-0.01em;
@@ -99,7 +119,6 @@
     line-height:1.15;
   }
   p{color:var(--text-muted);}
-  .italic{font-style:italic;}
 
   /* ---------- BACKGROUND ATMOSPHERE ---------- */
   .aurora{
@@ -137,10 +156,6 @@
     33%{ transform: translate(-4%, 8%) scale(1.08); }
     66%{ transform: translate(4%, -6%) scale(1.03); }
   }
-  @media (prefers-reduced-motion: reduce){
-    .orb-1,.orb-2{animation:none;}
-  }
-
   /* ---------- NAV ---------- */
   .nav{
     position:fixed;
@@ -155,6 +170,7 @@
     backdrop-filter:blur(24px) saturate(160%);
     -webkit-backdrop-filter:blur(24px) saturate(160%);
     border-bottom:1px solid var(--border-soft);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .nav-inner{
     display:flex;
@@ -248,12 +264,60 @@
   .btn-sm{padding:10px 20px; font-size:13px;}
 
   .nav-cta{display:flex; align-items:center; gap:18px;}
-  .burger{display:none;}
+
+  /* ---------- MOBILE MENU ---------- */
+  .burger{
+    display:none;
+    width:42px; height:42px;
+    align-items:center; justify-content:center;
+    border-radius:50%;
+    background:var(--surface);
+    border:1px solid var(--border-soft);
+    color:var(--text-main);
+    font-size:17px;
+    cursor:pointer;
+  }
+  .mobile-menu{
+    position:fixed; inset:0; z-index:150;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:24px;
+    padding:76px 24px 40px;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    background:rgba(10,8,16,0.94);
+    backdrop-filter:blur(24px) saturate(180%);
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
+  }
+  .mobile-menu[hidden]{display:none;}
+  .mobile-menu a{
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    color:var(--text-main);
+  }
+  .mobile-menu a:hover{color:var(--gold-light);}
+  .mobile-menu .btn{
+    font-family:var(--font-body);
+    font-size:14px;
+    color:#211405;
+    margin-top:6px;
+  }
+  .menu-close{
+    position:absolute; top:18px; right:18px;
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--surface);
+    border:1px solid var(--border-soft);
+    color:var(--text-main);
+    font-size:19px;
+    cursor:pointer;
+  }
+  body.menu-open{overflow:hidden;}
 
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    padding:180px 0 120px;
+    padding:132px 0 88px;
     min-height:100vh;
     display:flex;
     align-items:center;
@@ -272,7 +336,7 @@
     border-radius:100px;
     background:var(--surface);
     border:1px solid var(--border);
-    margin-bottom:28px;
+    margin-bottom:22px;
   }
   .hero-badge .dot{
     width:7px;height:7px;border-radius:50%;
@@ -286,7 +350,7 @@
   }
   .hero-badge span{font-size:12.5px; color:var(--text-muted); letter-spacing:0.02em;}
 
-  .hero h1{margin-bottom:26px;}
+  .hero h1{margin-bottom:20px;}
   .hero h1 em{
     font-style:italic;
     background:linear-gradient(100deg, var(--gold-light), var(--gold) 45%, var(--violet-light));
@@ -297,7 +361,7 @@
   .hero-sub{
     font-size:clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
     max-width:520px;
-    margin-bottom:40px;
+    margin-bottom:28px;
     color:var(--text-muted);
   }
   .hero-actions{
@@ -316,7 +380,7 @@
   .hero-stats{
     display:flex;
     gap:40px;
-    margin-top:64px;
+    margin-top:40px;
     flex-wrap:wrap;
   }
   .hero-stat b{
@@ -336,13 +400,22 @@
   /* Hero visual — quantum numeral wheel */
   .hero-visual{
     position:relative;
-    aspect-ratio:1/1;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
   }
   .wheel-wrap{
     position:relative;
     width:100%;
-    max-width:460px;
+    max-width:352px;
+    aspect-ratio:1/1;
+  }
+  .wheel-wrap svg{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    z-index:2;
   }
   .wheel-glow{
     position:absolute;
@@ -351,29 +424,48 @@
     filter:blur(40px);
     z-index:0;
   }
-  .wheel-photo{
+  .wheel-core{
     position:absolute;
-    inset:14%;
-    border-radius:50%;
-    overflow:hidden;
+    inset:23%;
     z-index:1;
-    box-shadow:
-      0 0 0 1px rgba(212,175,110,0.3),
-      0 0 0 14px rgba(255,255,255,0.02),
-      0 30px 70px rgba(0,0,0,0.55);
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6%;
+    background:radial-gradient(circle at 50% 32%, rgba(212,175,110,0.16), rgba(10,8,16,0.9) 72%);
+    box-shadow:0 0 0 1px rgba(212,175,110,0.22), 0 30px 70px rgba(0,0,0,0.5);
   }
-  .wheel-photo img{
-    width:100%; height:100%;
-    object-fit:cover;
-    filter:saturate(0.85) contrast(1.05);
+  .core-label{
+    font-size:9.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--text-dim);
   }
-  .wheel-photo::after{
-    content:'';
-    position:absolute; inset:0;
-    background:
-      radial-gradient(circle, transparent 45%, rgba(10,8,16,0.65) 100%),
-      linear-gradient(160deg, rgba(212,175,110,0.18), rgba(138,107,214,0.28));
-    mix-blend-mode:multiply;
+  .core-num{
+    font-family:var(--font-display);
+    font-size:clamp(3rem, 1.6rem + 6vw, 4.6rem);
+    line-height:1;
+    color:var(--gold-light);
+    margin-top:10px;
+  }
+  .calc-chain{
+    margin-top:14px;
+    font-size:13px;
+    color:var(--gold-light);
+    font-variant-numeric:tabular-nums;
+  }
+  .num-glyph{
+    font-family:var(--font-display);
+    font-size:21px;
+    fill:rgba(243,239,230,0.5);
+    transition:fill 0.5s var(--ease-out-soft);
+  }
+  .num-glyph.is-active{
+    fill:var(--gold-light);
+    filter:drop-shadow(0 0 9px rgba(212,175,110,0.7));
   }
   .wheel-ring-outer{
     animation:spin-slow 90s linear infinite;
@@ -384,57 +476,49 @@
     transform-origin:center;
   }
   @keyframes spin-slow{ to{ transform:rotate(360deg); } }
-  .wheel-card{
-    position:absolute;
-    bottom:6%;
-    left:50%;
-    transform:translateX(-50%);
-    width:78%;
-    padding:20px 24px;
-    border-radius:20px;
-    background:linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
-    backdrop-filter:blur(30px) saturate(160%);
-    -webkit-backdrop-filter:blur(30px) saturate(160%);
+  /* Live life-path calculator */
+  .calc{
+    width:100%;
+    max-width:400px;
+    padding:20px 22px 22px;
+    border-radius:22px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+    backdrop-filter:blur(24px) saturate(180%);
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
     border:1px solid rgba(255,255,255,0.14);
-    box-shadow:0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
-    z-index:3;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.16), 0 24px 50px rgba(0,0,0,0.45);
   }
-  .wheel-card .wc-label{
-    font-size:10px; letter-spacing:0.15em; text-transform:uppercase;
-    color:var(--text-dim); margin-bottom:6px;
-  }
-  .wheel-card .wc-num{
-    font-family:var(--font-display);
-    font-size:2.4rem;
-    color:var(--gold-light);
-    line-height:1;
-    margin-bottom:4px;
-  }
-  .wheel-card .wc-desc{font-size:12.5px; color:var(--text-muted);}
-
-  /* ---------- LOGOS / SOCIAL PROOF ---------- */
-  .proof{
-    padding:56px 0;
-    border-top:1px solid var(--border-soft);
-    border-bottom:1px solid var(--border-soft);
-  }
-  .proof-inner{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:32px;
-  }
-  .proof-item{text-align:center; flex:1; min-width:140px;}
-  .proof-item b{
+  .calc-label{
     display:block;
-    font-family:var(--font-display);
-    font-size:2.4rem;
-    background:linear-gradient(135deg, var(--gold-light), var(--violet-light));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:12px;
   }
-  .proof-item span{
-    font-size:12px; letter-spacing:0.05em; color:var(--text-dim);
+  .calc-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .calc-input{
+    flex:1;
+    min-width:150px;
+    font-family:var(--font-body);
+    font-size:14px;
+    padding:12px 16px;
+    border-radius:100px;
+    background:rgba(10,8,16,0.5);
+    border:1px solid var(--border-soft);
+    color:var(--text-main);
+    transition:border-color 0.25s;
   }
+  .calc-input:hover{border-color:var(--border);}
+  .calc-meaning{
+    margin-top:8px;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--text-muted);
+    min-height:3.9em;
+  }
+  .calc-meaning.is-error{color:#f0a58c;}
 
   /* ---------- SECTION HEADER ---------- */
   section{padding:128px 0;}
@@ -442,7 +526,24 @@
     max-width:640px;
     margin-bottom:72px;
   }
-  .section-head .eyebrow{display:block; margin-bottom:14px;}
+  .section-head .eyebrow,
+  .final-cta .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:16px;
+  }
+  .section-head .eyebrow::before,
+  .final-cta .eyebrow::before{
+    content:'';
+    width:56px;
+    height:1px;
+    background:linear-gradient(90deg, var(--gold), rgba(212,175,110,0));
+  }
+  .section-head.is-center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-head.is-center .eyebrow,
+  .final-cta .eyebrow{justify-content:center;}
+  .section-head.is-center p{margin-left:auto; margin-right:auto;}
   .section-head h2{margin-bottom:18px;}
   .section-head p{font-size:1.05rem;}
 
@@ -508,7 +609,7 @@
   .about-portrait-tag .name{font-family:var(--font-display); font-size:1.5rem; color:var(--text-main);}
   .about-portrait-tag .role{font-size:12px; color:var(--gold-light); letter-spacing:0.05em; margin-top:2px;}
 
-  .about-content h2{margin-bottom:22px;}
+  .about-content h2{margin:14px 0 22px;}
   .about-content p{margin-bottom:18px; font-size:1.02rem;}
   .about-facts{
     display:grid;
@@ -524,7 +625,15 @@
     background:var(--surface);
     border:1px solid var(--border-soft);
   }
-  .fact-num{font-family:var(--font-display); font-size:1.3rem; color:var(--gold-light); min-width:34px;}
+  .fact-key{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    min-width:56px;
+    padding-top:2px;
+  }
   .fact-text{font-size:13px; color:var(--text-muted); line-height:1.45;}
 
   /* ---------- BENTO SERVICES ---------- */
@@ -623,14 +732,6 @@
   }
   .process-step h3{font-size:1.15rem; margin-bottom:10px;}
   .process-step p{font-size:13.5px;}
-  .process-step:not(:last-child)::after{
-    content:'';
-    position:absolute;
-    top:50%; right:-20px;
-    width:20px; height:1px;
-    background:linear-gradient(90deg, var(--border), transparent);
-    display:none;
-  }
 
   /* ---------- TESTIMONIALS ---------- */
   .testi-grid{
@@ -641,9 +742,11 @@
   .testi-card{
     padding:44px;
     border-radius:24px;
-    background:linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+    background:linear-gradient(160deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
     border:1px solid var(--border-soft);
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(24px) saturate(180%);
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);
   }
   .testi-quote{
     font-family:var(--font-display);
@@ -656,10 +759,8 @@
   .testi-quote::before{content:'“'; color:var(--gold); margin-right:2px;}
   .testi-person{display:flex; align-items:center; gap:14px;}
   .testi-avatar{
-    width:46px; height:46px; border-radius:50%;
-    background:linear-gradient(135deg, var(--gold), var(--violet));
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display); color:#0a0810; font-size:1.1rem;
+    width:46px; height:46px;
+    border-radius:50%;
     object-fit:cover;
     flex-shrink:0;
     border:1px solid rgba(255,255,255,0.15);
@@ -774,7 +875,7 @@
     z-index:0;
   }
   .final-cta > *{position:relative; z-index:1;}
-  .final-cta h2{margin-bottom:20px;}
+  .final-cta h2{margin:18px 0 20px;}
   .final-cta p{max-width:520px; margin:0 auto 40px; font-size:1.05rem;}
   .final-actions{display:flex; gap:20px; justify-content:center; flex-wrap:wrap;}
 
@@ -795,7 +896,8 @@
     color:var(--text-dim); margin-bottom:18px; font-weight:600;
   }
   .footer-col li{margin-bottom:12px;}
-  .footer-col a{font-size:13.8px; color:var(--text-muted); transition:color 0.25s;}
+  .footer-col a,
+  .footer-col span{font-size:13.8px; color:var(--text-muted); transition:color 0.25s;}
   .footer-col a:hover{color:var(--gold-light);}
   .footer-bottom{
     display:flex; justify-content:space-between; align-items:center;
@@ -829,10 +931,10 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 980px){
     .nav-links{display:none;}
-    .burger{display:flex; width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border-soft);align-items:center;justify-content:center;font-size:18px;}
+    .burger{display:flex;}
     .hero{padding:150px 0 80px;}
     .hero-inner{grid-template-columns:1fr; gap:64px;}
-    .hero-visual{order:-1; max-width:340px; margin:0 auto;}
+    .hero-visual{max-width:400px; margin:0 auto;}
     .about-grid{grid-template-columns:1fr;}
     .about-portrait{max-width:360px; margin:0 auto;}
     .bento-large,.bento-tall,.bento-wide,.bento-square{grid-column:span 12; grid-row:span 1;}
@@ -846,13 +948,25 @@
   }
   @media (max-width: 560px){
     .wrap{padding:0 20px;}
-    .proof-inner{justify-content:flex-start;}
-    .proof-item{min-width:45%;}
+    .logo{font-size:1.05rem;}
+    .logo-sub{font-size:8.5px; letter-spacing:0.14em;}
+    .nav-cta .btn{display:none;}
     .process-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr;}
     .footer-bottom{flex-direction:column; align-items:flex-start;}
     .final-cta{padding:60px 28px;}
     .hero-stats{gap:28px;}
+    .testi-card{padding:32px 26px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.01ms !important;
+      scroll-behavior:auto !important;
+    }
+    .reveal{opacity:1 !important; transform:none !important;}
   }
 </style>
 </head>
@@ -882,10 +996,21 @@
     </div>
     <div class="nav-cta">
       <a href="#pricing" class="btn btn-primary btn-sm">Записаться</a>
-      <div class="burger">☰</div>
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">☰</button>
     </div>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <button class="menu-close" id="menuClose" type="button" aria-label="Закрыть меню">✕</button>
+  <a href="#about">Обо мне</a>
+  <a href="#services">Услуги</a>
+  <a href="#process">Как это устроено</a>
+  <a href="#testimonials">Отзывы</a>
+  <a href="#pricing">Цены</a>
+  <a href="#faq">Вопросы</a>
+  <a href="#pricing" class="btn btn-primary">Записаться на разбор</a>
+</div>
 
 <!-- HERO -->
 <header class="hero" id="top">
@@ -896,7 +1021,7 @@
         <span>Приём в Ставрополе и онлайн по всему миру</span>
       </div>
       <h1 class="fade-up">Числа знают то,<br>что вы ещё <em>не осознали</em></h1>
-      <p class="hero-sub fade-up">Квантовая нумерология Оксаны Соколовой соединяет древний расчёт даты рождения с современным взглядом на энергию решений. Разбор личного кода, матрицы судьбы и денежного потенциала — без эзотерических штампов, языком, который понятен здесь и сейчас.</p>
+      <p class="hero-sub fade-up">Считаю матрицу по дате рождения и объясняю её без эзотерических штампов: личный код, совместимость, деньги — языком, на котором можно принимать решения.</p>
       <div class="hero-actions fade-up">
         <a href="#pricing" class="btn btn-primary">Записаться на разбор</a>
         <a href="#services" class="link-cta">
@@ -918,8 +1043,8 @@
           <span>Средняя оценка</span>
         </div>
         <div class="hero-stat">
-          <b>17</b>
-          <span>Стран, где живут клиенты</span>
+          <b>96%</b>
+          <span>Возвращаются повторно</span>
         </div>
       </div>
     </div>
@@ -927,22 +1052,13 @@
     <div class="hero-visual">
       <div class="wheel-wrap">
         <div class="wheel-glow"></div>
-        <div class="wheel-photo">
-          <img src="https://images.unsplash.com/photo-1526835746352-0b9da4054862?q=80&w=800&auto=format&fit=crop" alt="Оксана Соколова — квантовый нумеролог" loading="lazy">
+        <div class="wheel-core">
+          <span class="core-label" id="coreLabel">Пример расчёта</span>
+          <span class="core-num" id="coreNum">5</span>
         </div>
-        <svg viewBox="0 0 460 460" class="wheel-ring-outer" style="position:relative;z-index:2;">
-          <circle cx="230" cy="230" r="210" fill="none" stroke="rgba(212,175,110,0.25)" stroke-width="1"/>
+        <svg class="wheel-ring-outer" viewBox="0 0 460 460" aria-hidden="true" focusable="false">
+          <circle cx="230" cy="230" r="210" fill="none" stroke="rgba(212,175,110,0.22)" stroke-width="1"/>
           <circle cx="230" cy="230" r="210" fill="none" stroke="url(#gradRing)" stroke-width="1.4" stroke-dasharray="4 10"/>
-          <g font-family="Playfair Display" font-size="22" fill="rgba(243,239,230,0.75)" text-anchor="middle">
-            <text x="230" y="36">1</text>
-            <text x="371" y="80">2</text>
-            <text x="420" y="230">3</text>
-            <text x="371" y="386">4</text>
-            <text x="230" y="434">5</text>
-            <text x="88" y="386">6</text>
-            <text x="40" y="230">7</text>
-            <text x="88" y="80">8</text>
-          </g>
           <defs>
             <linearGradient id="gradRing" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="#d4af6a"/>
@@ -950,36 +1066,41 @@
             </linearGradient>
           </defs>
         </svg>
-        <svg viewBox="0 0 460 460" class="wheel-ring-inner" style="position:absolute; inset:0; z-index:2;">
-          <circle cx="230" cy="230" r="150" fill="none" stroke="rgba(138,107,214,0.3)" stroke-width="1"/>
-          <polygon points="230,90 342,160 342,300 230,370 118,300 118,160" fill="none" stroke="rgba(212,175,110,0.35)" stroke-width="1"/>
+        <svg class="wheel-numerals" viewBox="0 0 460 460" aria-hidden="true" focusable="false">
+          <text class="num-glyph" data-num="1" x="230" y="40" text-anchor="middle" dominant-baseline="central">1</text>
+          <text class="num-glyph" data-num="2" x="352" y="85" text-anchor="middle" dominant-baseline="central">2</text>
+          <text class="num-glyph" data-num="3" x="417" y="197" text-anchor="middle" dominant-baseline="central">3</text>
+          <text class="num-glyph" data-num="4" x="395" y="325" text-anchor="middle" dominant-baseline="central">4</text>
+          <text class="num-glyph is-active" data-num="5" x="295" y="409" text-anchor="middle" dominant-baseline="central">5</text>
+          <text class="num-glyph" data-num="6" x="165" y="409" text-anchor="middle" dominant-baseline="central">6</text>
+          <text class="num-glyph" data-num="7" x="65" y="325" text-anchor="middle" dominant-baseline="central">7</text>
+          <text class="num-glyph" data-num="8" x="43" y="197" text-anchor="middle" dominant-baseline="central">8</text>
+          <text class="num-glyph" data-num="9" x="108" y="85" text-anchor="middle" dominant-baseline="central">9</text>
         </svg>
-        <div class="wheel-card">
-          <div class="wc-label">Ваше квантовое число</div>
-          <div class="wc-num">11 / 2</div>
-          <div class="wc-desc">Число интуиции и трансформации — путь к переосмыслению отношений с деньгами</div>
-        </div>
+        <svg class="wheel-ring-inner" viewBox="0 0 460 460" aria-hidden="true" focusable="false">
+          <circle cx="230" cy="230" r="150" fill="none" stroke="rgba(138,107,214,0.28)" stroke-width="1"/>
+          <polygon points="230,90 342,160 342,300 230,370 118,300 118,160" fill="none" stroke="rgba(212,175,110,0.3)" stroke-width="1"/>
+        </svg>
       </div>
+
+      <form class="calc" id="calcForm" novalidate>
+        <label class="calc-label" for="birth">Узнайте своё число прямо сейчас</label>
+        <div class="calc-row">
+          <input class="calc-input" type="date" id="birth" name="birth" min="1900-01-01" required>
+          <button class="btn btn-primary btn-sm" type="submit">Рассчитать</button>
+        </div>
+        <p class="calc-chain" id="coreChain">1+1+1+1+1+9+9+0 = 23 → 5</p>
+        <p class="calc-meaning" id="calcMeaning" aria-live="polite">Введите дату рождения — покажу число жизненного пути и что оно означает в разборе.</p>
+      </form>
     </div>
   </div>
 </header>
-
-<!-- SOCIAL PROOF -->
-<section class="proof" style="padding-top:0; padding-bottom:0;">
-  <div class="wrap proof-inner">
-    <div class="proof-item reveal"><b>500+</b><span>Персональных разборов</span></div>
-    <div class="proof-item reveal"><b>8</b><span>Лет практики</span></div>
-    <div class="proof-item reveal"><b>17</b><span>Стран</span></div>
-    <div class="proof-item reveal"><b>96%</b><span>Возвращаются повторно</span></div>
-    <div class="proof-item reveal"><b>4.9/5</b><span>Средний рейтинг</span></div>
-  </div>
-</section>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
     <div class="about-portrait reveal">
-      <img class="about-portrait-img" src="https://images.unsplash.com/photo-1536766768598-e09213fdcf22?q=80&w=900&auto=format&fit=crop" alt="Оксана Соколова, квантовый нумеролог" loading="lazy">
+      <img class="about-portrait-img" src="https://images.unsplash.com/photo-1536766768598-e09213fdcf22?q=80&w=900&auto=format&fit=crop" alt="Оксана Соколова, квантовый нумеролог" width="900" height="1125" loading="lazy" decoding="async">
       <div class="about-portrait-tag">
         <div class="name">Оксана Соколова</div>
         <div class="role">Квантовый нумеролог · г. Ставрополь</div>
@@ -987,25 +1108,25 @@
     </div>
     <div class="about-content reveal">
       <span class="eyebrow">Обо мне</span>
-      <h2 style="margin-top:14px;">Нумерология — это язык, а не гадание</h2>
+      <h2>Нумерология — это язык, а не гадание</h2>
       <p>Я 8 лет изучаю числовые коды рождения и их влияние на решения, отношения и деньги. Начинала с классической пифагорейской нумерологии, но мне стало тесно в рамках готовых трактовок — так родился авторский метод «квантового разбора»: я соединяю точный расчёт матрицы с работой с текущим состоянием клиента, чтобы прогноз был не абстрактным, а применимым уже на этой неделе.</p>
       <p>За плечами — сертификация Московской школы нумерологии (2018), два авторских курса и практика с клиентами из России, Казахстана, Германии и ОАЭ. Провожу консультации очно в Ставрополе и онлайн в Zoom/Telegram — формат не влияет на глубину разбора.</p>
       <div class="about-facts">
         <div class="fact">
-          <span class="fact-num">01</span>
-          <span class="fact-text">Сертифицированный нумеролог, диплом Московской школы нумерологии, 2018</span>
+          <span class="fact-key">2018</span>
+          <span class="fact-text">Диплом Московской школы нумерологии, сертифицированная практика</span>
         </div>
         <div class="fact">
-          <span class="fact-num">02</span>
+          <span class="fact-key">Метод</span>
           <span class="fact-text">Автор методики «Квантовый код рождения» и курса «Денежная матрица»</span>
         </div>
         <div class="fact">
-          <span class="fact-num">03</span>
-          <span class="fact-text">Более 500 личных разборов и 40 групповых вебинаров с 2018 года</span>
+          <span class="fact-key">500+</span>
+          <span class="fact-text">Личных разборов и 40 групповых вебинаров с 2018 года</span>
         </div>
         <div class="fact">
-          <span class="fact-num">04</span>
-          <span class="fact-text">Работаю очно в Ставрополе и онлайн в любом часовом поясе</span>
+          <span class="fact-key">Формат</span>
+          <span class="fact-text">Очно в Ставрополе и онлайн в любом часовом поясе</span>
         </div>
       </div>
     </div>
@@ -1023,29 +1144,29 @@
 
     <div class="bento-grid reveal">
       <div class="bento-cell bento-large">
-        <img class="bento-photo" src="https://images.unsplash.com/photo-1560427450-00fa9481f01e?q=80&w=1200&auto=format&fit=crop" alt="" loading="lazy">
+        <img class="bento-photo" src="https://images.unsplash.com/photo-1560427450-00fa9481f01e?q=80&w=1200&auto=format&fit=crop" alt="" width="1200" height="800" loading="lazy" decoding="async">
         <span class="bento-tag">Флагманская услуга</span>
-        <span class="cell-icon">✦</span>
+        <span class="cell-icon" aria-hidden="true">✦</span>
         <h3>Квантовый разбор личности</h3>
         <p>Полный расчёт матрицы судьбы: число жизненного пути, кармические долги, таланты и слепые зоны. 90-минутная сессия + PDF-отчёт на 20+ страниц + аудиозапись встречи.</p>
       </div>
       <div class="bento-cell bento-tall">
-        <span class="cell-icon">◈</span>
+        <span class="cell-icon" aria-hidden="true">◈</span>
         <h3>Совместимость пары</h3>
         <p>Сравнение матриц двух людей: точки притяжения, зоны конфликта и рекомендации, как усилить союз. Подходит для пар, партнёров по бизнесу и родителей с детьми.</p>
       </div>
       <div class="bento-cell bento-tall">
-        <span class="cell-icon">☾</span>
+        <span class="cell-icon" aria-hidden="true">☾</span>
         <h3>Денежный код</h3>
         <p>Расчёт финансовой матрицы: блоки, мешающие доходу, благоприятные периоды для сделок и число для управления накоплениями.</p>
       </div>
       <div class="bento-cell bento-wide">
-        <span class="cell-icon">✧</span>
+        <span class="cell-icon" aria-hidden="true">✧</span>
         <h3>Нумерология имени</h3>
         <p>Анализ имени и фамилии — как звучание влияет на восприятие вас миром. Полезно перед сменой фамилии, неймингом бизнеса или выбором имени ребёнку.</p>
       </div>
       <div class="bento-cell bento-square">
-        <span class="cell-icon">◉</span>
+        <span class="cell-icon" aria-hidden="true">◉</span>
         <h3>Прогноз на год</h3>
         <p>Персональный нумерологический календарь на 12 месяцев: удачные даты, периоды спада и точки роста.</p>
       </div>
@@ -1096,24 +1217,24 @@
       <div class="testi-card">
         <p class="testi-quote">Пришла из любопытства, а ушла с чётким пониманием, почему я третий год не могу закрыть один и тот же денежный вопрос. Оксана объяснила это через числа рождения так спокойно и конкретно, что стало не мистикой, а инструкцией к действию. Через два месяца после сессии закрыла кредит, который «висел» три года.</p>
         <div class="testi-person">
-          <img class="testi-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="Марина Дегтярёва" loading="lazy">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" alt="Марина Дегтярёва" width="200" height="200" loading="lazy" decoding="async">
           <div>
             <div class="p-name">Марина Дегтярёва</div>
             <div class="p-role">34 года, Ставрополь · разбор «Денежный код»</div>
           </div>
         </div>
-        <div class="testi-stars">★★★★★</div>
+        <div class="testi-stars" role="img" aria-label="Оценка 5 из 5">★★★★★</div>
       </div>
       <div class="testi-card">
         <p class="testi-quote">Заказывал разбор совместимости с партнёром по бизнесу перед подписанием договора. Скептически относился к нумерологии, но Оксана не гадала «на кофейной гуще» — показала конкретные зоны, где у нас будут трения по срокам и деньгам. Спустя год могу сказать: совпало почти один в один, и мы заранее выстроили процессы с учётом этого.</p>
         <div class="testi-person">
-          <img class="testi-avatar" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=200&auto=format&fit=crop" alt="Дмитрий Артёмов" loading="lazy">
+          <img class="testi-avatar" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=200&auto=format&fit=crop" alt="Дмитрий Артёмов" width="200" height="200" loading="lazy" decoding="async">
           <div>
             <div class="p-name">Дмитрий Артёмов</div>
             <div class="p-role">41 год, Москва · разбор «Совместимость»</div>
           </div>
         </div>
-        <div class="testi-stars">★★★★★</div>
+        <div class="testi-stars" role="img" aria-label="Оценка 5 из 5">★★★★★</div>
       </div>
     </div>
   </div>
@@ -1122,10 +1243,10 @@
 <!-- PRICING -->
 <section id="pricing">
   <div class="wrap">
-    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+    <div class="section-head is-center reveal">
       <span class="eyebrow">Стоимость</span>
       <h2>Выберите глубину погружения</h2>
-      <p style="margin:0 auto;">Оплата картой, переводом или через СБП. Рассрочка доступна для годового сопровождения.</p>
+      <p>Оплата картой, переводом или через СБП. Рассрочка доступна для годового сопровождения.</p>
     </div>
     <div class="pricing-grid reveal">
       <div class="price-card">
@@ -1133,10 +1254,10 @@
         <div class="price-amount">3 900 ₽</div>
         <div class="price-desc">Знакомство с личным кодом — отличная точка входа</div>
         <ul class="price-features">
-          <li><span class="ico">✦</span>Расчёт числа жизненного пути</li>
-          <li><span class="ico">✦</span>PDF-отчёт на 8 страниц</li>
-          <li><span class="ico">✦</span>45-минутная сессия онлайн</li>
-          <li><span class="ico">✦</span>Ответы на 2 уточняющих вопроса</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Расчёт числа жизненного пути</li>
+          <li><span class="ico" aria-hidden="true">✦</span>PDF-отчёт на 8 страниц</li>
+          <li><span class="ico" aria-hidden="true">✦</span>45-минутная сессия онлайн</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Ответы на 2 уточняющих вопроса</li>
         </ul>
         <a href="#contact" class="btn btn-ghost">Записаться</a>
       </div>
@@ -1146,12 +1267,12 @@
         <div class="price-amount">7 500 ₽</div>
         <div class="price-desc">Полная матрица судьбы и денежный код в одной сессии</div>
         <ul class="price-features">
-          <li><span class="ico">✦</span>Полный расчёт матрицы судьбы</li>
-          <li><span class="ico">✦</span>PDF-отчёт на 20+ страниц</li>
-          <li><span class="ico">✦</span>90-минутная сессия очно или онлайн</li>
-          <li><span class="ico">✦</span>Аудиозапись встречи</li>
-          <li><span class="ico">✦</span>Рекомендации и практики на 3 месяца</li>
-          <li><span class="ico">✦</span>7 дней поддержки в Telegram</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Полный расчёт матрицы судьбы</li>
+          <li><span class="ico" aria-hidden="true">✦</span>PDF-отчёт на 20+ страниц</li>
+          <li><span class="ico" aria-hidden="true">✦</span>90-минутная сессия очно или онлайн</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Аудиозапись встречи</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Рекомендации и практики на 3 месяца</li>
+          <li><span class="ico" aria-hidden="true">✦</span>7 дней поддержки в Telegram</li>
         </ul>
         <a href="#contact" class="btn btn-primary">Записаться</a>
       </div>
@@ -1160,11 +1281,11 @@
         <div class="price-amount">42 000 ₽<span> / год</span></div>
         <div class="price-desc">Персональное кураторство на 12 месяцев</div>
         <ul class="price-features">
-          <li><span class="ico">✦</span>Ежемесячный разбор текущего периода</li>
-          <li><span class="ico">✦</span>Персональный нумерологический календарь</li>
-          <li><span class="ico">✦</span>Приоритетная запись вне очереди</li>
-          <li><span class="ico">✦</span>Безлимитный чат поддержки</li>
-          <li><span class="ico">✦</span>Рассрочка на 6 или 12 месяцев</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Ежемесячный разбор текущего периода</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Персональный нумерологический календарь</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Приоритетная запись вне очереди</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Безлимитный чат поддержки</li>
+          <li><span class="ico" aria-hidden="true">✦</span>Рассрочка на 6 или 12 месяцев</li>
         </ul>
         <a href="#contact" class="btn btn-ghost">Обсудить</a>
       </div>
@@ -1212,12 +1333,12 @@
 <section>
   <div class="wrap">
     <div class="final-cta reveal">
-      <img class="final-cta-bg" src="https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?q=80&w=1600&auto=format&fit=crop" alt="" loading="lazy">
+      <img class="final-cta-bg" src="https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?q=80&w=1600&auto=format&fit=crop" alt="" width="1600" height="900" loading="lazy" decoding="async">
       <span class="eyebrow">Готовы узнать свой код?</span>
-      <h2 style="margin-top:18px;">Первый шаг — назвать дату своего рождения</h2>
+      <h2>Первый шаг — назвать дату своего рождения</h2>
       <p>Оставьте заявку, и я свяжусь с вами в течение дня, чтобы подобрать формат разбора и удобное время сессии.</p>
       <div class="final-actions">
-        <a href="https://t.me/oksana_numerolog" class="btn btn-primary">Написать в Telegram</a>
+        <a href="https://t.me/oksana_numerolog" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
         <a href="tel:+79285551407" class="btn btn-ghost">Позвонить: +7 928 555-14-07</a>
       </div>
     </div>
@@ -1259,52 +1380,169 @@
         <ul>
           <li><a href="tel:+79285551407">+7 928 555-14-07</a></li>
           <li><a href="mailto:oksana.numerolog@yandex.ru">oksana.numerolog@yandex.ru</a></li>
-          <li><a href="#">г. Ставрополь, ул. Мира, 288, офис 14</a></li>
-          <li><a href="#">Пн–Сб, 10:00–20:00 (МСК+0)</a></li>
+          <li><span>г. Ставрополь, ул. Мира, 288, офис 14</span></li>
+          <li><span>Пн–Сб, 10:00–20:00 (МСК)</span></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Оксана Соколова. Квантовая нумерология. Все права защищены.</span>
       <div class="social-row">
-        <a href="https://t.me/oksana_numerolog" title="Telegram">✈</a>
-        <a href="https://wa.me/79285551407" title="WhatsApp">☎</a>
-        <a href="https://instagram.com/oksana.quantum.numerology" title="Instagram">◎</a>
-        <a href="mailto:oksana.numerolog@yandex.ru" title="Email">✉</a>
+        <a href="https://t.me/oksana_numerolog" title="Telegram" aria-label="Telegram" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">✈</span></a>
+        <a href="https://wa.me/79285551407" title="WhatsApp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">☎</span></a>
+        <a href="https://instagram.com/oksana.quantum.numerology" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◎</span></a>
+        <a href="mailto:oksana.numerolog@yandex.ru" title="Электронная почта" aria-label="Электронная почта"><span aria-hidden="true">✉</span></a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-  // Nav background on scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
+(function () {
+  'use strict';
+
+  /* Sticky navigation */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
     nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* Mobile menu */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+  var menuClose = document.getElementById('menuClose');
+
+  function setMenu(open) {
+    menu.hidden = !open;
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('menu-open', open);
+    (open ? menuClose : burger).focus();
+  }
+  burger.addEventListener('click', function () { setMenu(true); });
+  menuClose.addEventListener('click', function () { setMenu(false); });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { setMenu(false); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hidden) { setMenu(false); }
   });
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
+  /* Scroll reveal */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
 
-  // Only one FAQ item open at a time
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('toggle', () => {
+  /* FAQ: one answer open at a time */
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
+    item.addEventListener('toggle', function () {
       if (item.open) {
-        document.querySelectorAll('.faq-item').forEach(other => {
-          if (other !== item) other.open = false;
+        faqItems.forEach(function (other) {
+          if (other !== item) { other.open = false; }
         });
       }
     });
   });
+
+  /* Life-path calculator — the same reduction used in a real session */
+  var MEANINGS = {
+    1: 'Лидер: вы двигаетесь первым и плохо переносите чужой темп.',
+    2: 'Дипломат: ваша сила в союзах и точном чувстве момента.',
+    3: 'Голос: идеи начинают работать, когда вы проговариваете их вслух.',
+    4: 'Опора: система и дисциплина дают вам то, что другим даёт удача.',
+    5: 'Свобода: рутина гасит вас быстрее, чем усталость.',
+    6: 'Забота: вы держите других и забываете держать себя.',
+    7: 'Аналитик: вам нужно понять прежде, чем поверить.',
+    8: 'Ресурс: деньги приходят через масштаб и ответственность.',
+    9: 'Итог: вы закрываете циклы и помогаете завершать их другим.',
+    11: 'Мастер-число интуиции: вы считываете больше, чем можете объяснить.',
+    22: 'Мастер-число строителя: крупные замыслы вам по размеру.',
+    33: 'Мастер-число наставника: ваш ресурс раскрывается через обучение.'
+  };
+
+  var form = document.getElementById('calcForm');
+  var input = document.getElementById('birth');
+  var coreLabel = document.getElementById('coreLabel');
+  var coreNum = document.getElementById('coreNum');
+  var coreChain = document.getElementById('coreChain');
+  var meaning = document.getElementById('calcMeaning');
+  var glyphs = document.querySelectorAll('.num-glyph');
+
+  function digitSum(n) {
+    var sum = 0;
+    while (n > 0) { sum += n % 10; n = Math.floor(n / 10); }
+    return sum;
+  }
+  function reduceNumber(n) {
+    while (n > 9 && n !== 11 && n !== 22 && n !== 33) { n = digitSum(n); }
+    return n;
+  }
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function highlight(value) {
+    var root = value > 9 ? reduceNumber(digitSum(value)) : value;
+    glyphs.forEach(function (g) {
+      g.classList.toggle('is-active', g.getAttribute('data-num') === String(root));
+    });
+  }
+
+  function render(label, day, month, year, withMeaning) {
+    var digits = (pad(day) + pad(month) + String(year)).split('');
+    var total = digits.reduce(function (a, d) { return a + Number(d); }, 0);
+    var result = reduceNumber(total);
+
+    coreLabel.textContent = label;
+    coreNum.textContent = String(result);
+    coreChain.textContent = digits.join('+') + ' = ' + total + (total === result ? '' : ' → ' + result);
+    highlight(result);
+
+    if (withMeaning) {
+      meaning.classList.remove('is-error');
+      meaning.textContent = 'Число ' + result + '. ' + MEANINGS[result];
+    }
+  }
+
+  if (form && input) {
+    var today = new Date();
+    var maxDate = today.getFullYear() + '-' + pad(today.getMonth() + 1) + '-' + pad(today.getDate());
+    input.setAttribute('max', maxDate);
+
+    render(
+      'Число дня · ' + pad(today.getDate()) + '.' + pad(today.getMonth() + 1) + '.' + today.getFullYear(),
+      today.getDate(), today.getMonth() + 1, today.getFullYear(), false
+    );
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(input.value);
+      if (!parts) {
+        meaning.classList.add('is-error');
+        meaning.textContent = 'Укажите полную дату рождения: день, месяц и год.';
+        return;
+      }
+      var year = Number(parts[1]), month = Number(parts[2]), day = Number(parts[3]);
+      var date = new Date(year, month - 1, day);
+      var exists = date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+      if (!exists || year < 1900 || date > today) {
+        meaning.classList.add('is-error');
+        meaning.textContent = 'Проверьте дату: год от 1900 до ' + today.getFullYear() + ', будущая дата не подойдёт.';
+        return;
+      }
+      render('Ваше число пути', day, month, year, true);
+    });
+  }
+})();
 </script>
 
 </body>
