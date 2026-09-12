@@ -7,7 +7,7 @@
      шрифты Google и фотографии Unsplash. Любой посторонний скрипт браузер заблокирует.
      ВАЖНО: после правки кода внутри тегов style или script хеши нужно пересчитать,
      иначе браузер отключит оформление и калькулятор. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://images.unsplash.com; style-src 'sha256-6XAvBtUEP/xMjH1/fc3xHBvOmtTexfrc/H55Y6cz4g0=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-DTvonqikWJd0lexAovAE75GDFUaY0fifHC3NPywyMFQ='; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://images.unsplash.com; style-src 'sha256-VQODHlIq0xsDC/Nk99Zs1sYJKWWsHlSvmBEj+bYdlv0=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'sha256-QaGqVZncNe6mutOYmaXvtXo0yVM99ir54xlNZ97Vsw8='; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="color-scheme" content="dark">
 <meta name="format-detection" content="telephone=no">
@@ -888,8 +888,8 @@
   }
   .footer-grid{
     display:grid;
-    grid-template-columns:1.4fr 1fr 1fr 1fr;
-    gap:40px;
+    grid-template-columns:1.2fr 0.9fr 0.9fr 1.55fr;
+    gap:36px;
     margin-bottom:64px;
   }
   .footer-brand p{font-size:13.8px; max-width:280px; margin-top:16px;}
@@ -974,7 +974,9 @@
     font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
     color:var(--text-dim); margin-bottom:7px;
   }
-  .field input{
+  .field[hidden]{display:none;}
+  .field input,
+  .field textarea{
     width:100%;
     font-family:var(--font-body); font-size:14px;
     padding:12px 16px;
@@ -984,9 +986,17 @@
     color:var(--text-main);
     transition:border-color 0.25s;
   }
-  .field input::placeholder{color:#6f6784;}
-  .field input:hover{border-color:var(--border);}
-  .field input.is-invalid{border-color:#f0a58c;}
+  .field textarea{
+    min-height:86px;
+    resize:vertical;
+    line-height:1.5;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder{color:#6f6784;}
+  .field input:hover,
+  .field textarea:hover{border-color:var(--border);}
+  .field input.is-invalid,
+  .field textarea.is-invalid{border-color:#f0a58c;}
   .form-error{font-size:12.5px; color:#f0a58c; margin-bottom:12px;}
   .form-error[hidden]{display:none;}
   #bookingForm .btn{width:100%; justify-content:center; margin-top:6px;}
@@ -1470,7 +1480,7 @@
         <ul>
           <li><button class="footer-link" type="button" data-book>Записаться на разбор</button></li>
           <li><button class="footer-link" type="button" data-book data-title="Заказать звонок">Заказать звонок</button></li>
-          <li><span>hello@oksana-numerolog.ru</span></li>
+          <li><button class="footer-link" type="button" data-book data-mode="mail">hello@oksana-numerolog.ru</button></li>
           <li><span>г. Ставрополь, ул. Мира, 288, офис 14</span></li>
           <li><span>Пн–Сб, 10:00–20:00 (МСК)</span></li>
         </ul>
@@ -1482,7 +1492,7 @@
         <button type="button" data-book title="Написать в Telegram" aria-label="Написать в Telegram"><span aria-hidden="true">✈</span></button>
         <button type="button" data-book title="Написать в WhatsApp" aria-label="Написать в WhatsApp"><span aria-hidden="true">☎</span></button>
         <button type="button" data-book title="Написать в Instagram" aria-label="Написать в Instagram"><span aria-hidden="true">◎</span></button>
-        <button type="button" data-book title="Написать на почту" aria-label="Написать на почту"><span aria-hidden="true">✉</span></button>
+        <button type="button" data-book data-mode="mail" title="Написать на почту" aria-label="Написать на почту"><span aria-hidden="true">✉</span></button>
       </div>
     </div>
   </div>
@@ -1503,7 +1513,7 @@
           <label for="bkName">Как к вам обращаться</label>
           <input type="text" id="bkName" name="name" maxlength="60" autocomplete="name" placeholder="Имя">
         </div>
-        <div class="field">
+        <div class="field" id="fieldDate">
           <label for="bkDate">Дата рождения</label>
           <input type="date" id="bkDate" name="birthdate" min="1900-01-01">
         </div>
@@ -1511,16 +1521,20 @@
           <label for="bkContact">Телефон или ник в Telegram</label>
           <input type="text" id="bkContact" name="contact" maxlength="40" autocomplete="tel" placeholder="+7 900 000-00-00">
         </div>
+        <div class="field" id="fieldMessage" hidden>
+          <label for="bkMessage">Сообщение</label>
+          <textarea id="bkMessage" name="message" maxlength="600" placeholder="Коротко о вашем запросе"></textarea>
+        </div>
         <p class="form-error" id="formError" role="alert" hidden></p>
-        <button class="btn btn-primary" type="submit">Отправить заявку</button>
+        <button class="btn btn-primary" type="submit" id="bkSubmit">Отправить заявку</button>
         <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
       </form>
     </div>
 
     <div class="modal-done" id="modalDone" hidden>
       <div class="done-mark" aria-hidden="true">✓</div>
-      <h3>Заявка принята</h3>
-      <p>Свяжусь с вами в течение дня и подберу формат разбора.</p>
+      <h3 id="doneTitle">Заявка принята</h3>
+      <p id="doneText">Свяжусь с вами в течение дня и подберу формат разбора.</p>
       <button class="btn btn-ghost" type="button" data-close>Закрыть</button>
     </div>
   </div>
@@ -1597,17 +1611,34 @@
   var bkName = document.getElementById('bkName');
   var bkDate = document.getElementById('bkDate');
   var bkContact = document.getElementById('bkContact');
-  var inputs = [bkName, bkDate, bkContact];
+  var bkMessage = document.getElementById('bkMessage');
+  var bkSubmit = document.getElementById('bkSubmit');
+  var fieldDate = document.getElementById('fieldDate');
+  var fieldMessage = document.getElementById('fieldMessage');
+  var doneTitle = document.getElementById('doneTitle');
+  var doneText = document.getElementById('doneText');
+  var inputs = [bkName, bkDate, bkContact, bkMessage];
   var lastFocused = null;
+  var mailMode = false;
 
   function openModal(trigger) {
     lastFocused = trigger;
     var title = trigger.getAttribute('data-title');
     var plan = trigger.getAttribute('data-plan');
-    modalTitle.textContent = title || 'Оставьте заявку';
-    modalSub.textContent = plan
-      ? 'Тариф «' + plan + '». Свяжусь в течение дня и подберу удобное время.'
-      : 'Свяжусь в течение дня, подберу формат разбора и удобное время.';
+    mailMode = trigger.getAttribute('data-mode') === 'mail';
+
+    fieldDate.hidden = mailMode;
+    fieldMessage.hidden = !mailMode;
+    bkSubmit.textContent = mailMode ? 'Отправить письмо' : 'Отправить заявку';
+    modalTitle.textContent = title || (mailMode ? 'Написать письмо' : 'Оставьте заявку');
+    if (mailMode) {
+      modalSub.textContent = 'Письмо придёт на hello@oksana-numerolog.ru. Отвечу в течение дня.';
+    } else if (plan) {
+      modalSub.textContent = 'Тариф «' + plan + '». Свяжусь в течение дня и подберу удобное время.';
+    } else {
+      modalSub.textContent = 'Свяжусь в течение дня, подберу формат разбора и удобное время.';
+    }
+
     formView.hidden = false;
     doneView.hidden = true;
     formError.hidden = true;
@@ -1668,21 +1699,27 @@
       bkName.classList.add('is-invalid');
       missing.push('имя');
     }
-    var parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(bkDate.value);
-    var dateOk = false;
-    if (parts) {
-      var y = Number(parts[1]), m = Number(parts[2]), d = Number(parts[3]);
-      var dt = new Date(y, m - 1, d);
-      dateOk = dt.getFullYear() === y && dt.getMonth() === m - 1 && dt.getDate() === d &&
-               y >= 1900 && dt <= new Date();
-    }
-    if (!dateOk) {
-      bkDate.classList.add('is-invalid');
-      missing.push('дату рождения');
+    if (!mailMode) {
+      var parts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(bkDate.value);
+      var dateOk = false;
+      if (parts) {
+        var y = Number(parts[1]), m = Number(parts[2]), d = Number(parts[3]);
+        var dt = new Date(y, m - 1, d);
+        dateOk = dt.getFullYear() === y && dt.getMonth() === m - 1 && dt.getDate() === d &&
+                 y >= 1900 && dt <= new Date();
+      }
+      if (!dateOk) {
+        bkDate.classList.add('is-invalid');
+        missing.push('дату рождения');
+      }
     }
     if (bkContact.value.trim().length < 5) {
       bkContact.classList.add('is-invalid');
       missing.push('телефон или ник');
+    }
+    if (mailMode && bkMessage.value.trim().length < 5) {
+      bkMessage.classList.add('is-invalid');
+      missing.push('текст сообщения');
     }
 
     if (missing.length) {
@@ -1694,6 +1731,10 @@
     }
 
     formError.hidden = true;
+    doneTitle.textContent = mailMode ? 'Письмо отправлено' : 'Заявка принята';
+    doneText.textContent = mailMode
+      ? 'Отвечу в течение дня на указанный вами контакт.'
+      : 'Свяжусь с вами в течение дня и подберу формат разбора.';
     formView.hidden = true;
     doneView.hidden = false;
     doneView.querySelector('.btn').focus();
